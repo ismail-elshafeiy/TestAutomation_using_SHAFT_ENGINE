@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test  name="using SHAFT">
+<!--verbose="2" preserve-order="false"-->
+        <classes>
+            <class name="testcases.T1_Register_Test">
+                <methods>
+                    <include name="RE_001_GuestRegister_viaValidEmail"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T2_Login_test">
+                <methods>
+                    <include name="LO_001_UserLogin_viaValidEmail"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T3_MyAccount_test">
+                <methods>
+                    <include name="MA_001_user_changeMyPassword"/>
+                    <include name="MA_002_UserLogin_viaNewPassword"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T4_HomeList_test">
+                <methods>
+                    <include name="HL_001_UserCan_Hover_SubCategoryFromMenu"/>
+                    <include name="HL_002_searchOfProductName_specificProduct"/>
+                    <include name="HL_003_searchOfProductName_AutoComplete"/>
+                    <include name="HL_004_searchOfProductName_Arrangement"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T5_ContactUs_test">
+                <methods>
+                    <include name="CO_001_guestCanContactWithAdmin"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T6_ProductDetails_test">
+                <methods>
+                    <include name="RE_001_GuestRegister_viaValidEmail"/>
+                    <include name="PD_001_guestCan_Add_ProductToCart"/>
+                    <include name="PD_002_guestCan_Add_ProductToWishlist"/>
+                    <include name="PD_003_UserCan_Send_ProductToFriend"/>
+                </methods>
+            </class>
+
+            <class name="testcases.T7_CheckoutProduct_Test">
+                <methods>
+                    <include name="RE_001_GuestRegister_viaValidEmail"/>
+                    <include name="PD_001_UserCan_Add_ProductToCart"/>
+                    <include name="Ch_001_UserCan_Checkout_Product_from_Cart"/>
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
+</suite>
