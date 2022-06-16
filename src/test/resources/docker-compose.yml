@@ -6,25 +6,71 @@
 # Add the `-d` flag at the end for detached execution and docker Log
 # Open http://localhost:4444/grid/console to see the actions
 # To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose.yml down --remove-orphans -d`
-version: "3"
+
+version: '3.7'
+
 services:
   selenium-hub:
-    image: selenium/hub:4.1.2
-    container_name: selenium-hub
+
+    image: selenium/hub:3.141.59-20200515
+
     ports:
-      - "4442:4442"
-      - "4443:4443"
-      - "4444:4444"
+      - 4444:4444
+
+    environment:
+
+      GRID_MAX_SESSION: 5
+      GRID_BROWSER_TIMEOUT: 300
+      GRID_TIMEOUT: 300
 
   chrome:
-    image: selenium/node-chrome:4.1.2
-    shm_size: 2gb
+    image: selenium/node-chrome:3.141.59-20200515
+
     depends_on:
       - selenium-hub
+
+    shm_size: 2gb
+    volumes:
+
+      - /dev/shm:/dev/shm
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      HUB_HOST: selenium-hub
+      HUB_PORT: 4444
+      SCREEN_WIDTH: 1920
+      SCREEN_HEIGHT: 1080
+      # set false for headless execution
+      START_XVFB: "false"
+      NODE_MAX_SESSION: 1
+      NODE_MAX_INSTANCES: 1
 
+#   firefox:
 
+#      image: selenium/node-firefox:3.141.59-20200515
 
+#      depends_on:
+
+#      - selenium-hub
+
+#      shm_size: 2gb
+
+#      volumes:
+
+#      - /dev/shm:/dev/shm
+
+#      environment:
+
+#         HUB_HOST: selenium-hub
+
+#         HUB_PORT: 4444
+
+#         SCREEN_WIDTH: 1920
+
+#         SCREEN_HEIGHT: 1080
+
+## set false for headless execution
+
+#         START_XVFB: "false"
+
+#         NODE_MAX_SESSION: 1
+
+#         NODE_MAX_INSTANCES: 1

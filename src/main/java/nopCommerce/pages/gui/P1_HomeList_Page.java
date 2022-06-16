@@ -20,7 +20,7 @@ public class P1_HomeList_Page {
     private final String homeUrl = System.getProperty("homeUrl");
     // Elements Locators
     private By register_linkTxt = By.cssSelector("a.ico-register");
-    private By login_linkTxt = By.linkText("Log in");
+    private final By login_linkTxt = By.linkText("Log in");
     private By wishlist_linkTxt = By.linkText("Wishlist");
     private By shoppingCart_linkTxt = By.linkText("Shopping cart");
     private By myAccount_linkTxt = By.cssSelector("a.ico-account");

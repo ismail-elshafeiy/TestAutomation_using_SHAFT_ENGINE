@@ -3,12 +3,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>NopCommerce</groupId>
+    <groupId>io.github.IsmailElshafeiy</groupId>
     <artifactId>Web-NopCommerce_TestAutomation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Web-NopCommerce_TestAutomation</name>
-    <url>https://demo.nopcommerce.com/</url>
+    <description>Selenium Automation Framework for Testing</description>
+    <url>https://github.com/ismail-elshafeiy</url>
 
     <properties>
         <shaft_engine.version>6.1.20220314</shaft_engine.version>
@@ -70,7 +70,9 @@
                         </property>
                         <property>
                             <name>listener</name>
-                            <value>com.shaft.tools.listeners.AlterSuiteListener,com.shaft.tools.listeners.SuiteListener,com.shaft.tools.listeners.InvokedMethodListener,com.shaft.tools.listeners.CucumberFeatureListener</value>
+                            <value>
+                                com.shaft.tools.listeners.AlterSuiteListener,com.shaft.tools.listeners.SuiteListener,com.shaft.tools.listeners.InvokedMethodListener,com.shaft.tools.listeners.CucumberFeatureListener
+                            </value>
                         </property>
                     </properties>
                 </configuration>
