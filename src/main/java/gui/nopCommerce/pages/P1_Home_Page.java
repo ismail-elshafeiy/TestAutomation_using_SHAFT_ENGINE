@@ -1,4 +1,4 @@
-package nopCommerce.pages.gui;
+package gui.nopCommerce.pages;
 
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.gui.element.ElementActions;
@@ -7,22 +7,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class P1_HomeList_Page {
+public class P1_Home_Page {
     // driver
     private WebDriver driver;
 
     // Constructor
-    public P1_HomeList_Page(WebDriver driver) {
+    public P1_Home_Page(WebDriver driver) {
         this.driver = driver;
     }
 
     // Home URL  ...
-    private final String homeUrl = System.getProperty("homeUrl");
+    private final String baseUrl = System.getProperty("homeUrl");
     // Elements Locators
     private By register_linkTxt = By.cssSelector("a.ico-register");
     private final By login_linkTxt = By.linkText("Log in");
-    private By wishlist_linkTxt = By.linkText("Wishlist");
-    private By shoppingCart_linkTxt = By.linkText("Shopping cart");
+    private final By wishlist_linkTxt = By.linkText("Wishlist");
+    private final By shoppingCart_linkTxt = By.linkText("Shopping cart");
     private By myAccount_linkTxt = By.cssSelector("a.ico-account");
     private By search_txt = By.xpath("//*[@id='small-searchterms']");
     private By search_btn = By.cssSelector("button.button-1.search-box-button");
@@ -64,8 +64,8 @@ public class P1_HomeList_Page {
      * @return self reference
      */
     @Step("Navigate to Home Page")
-    public P1_HomeList_Page navigateTo_HomePage() {
-        BrowserActions.navigateToURL(driver, homeUrl);
+    public P1_Home_Page navigateTo_HomePage() {
+        BrowserActions.navigateToURL(driver, baseUrl);
         
         return this;
     }
@@ -107,7 +107,7 @@ public class P1_HomeList_Page {
     }
 
     @Step("Search of product Name [{productName}]")
-    public P1_HomeList_Page searchOfProduct(String productName) {
+    public P1_Home_Page searchOfProduct(String productName) {
         ElementActions.type(driver, search_txt, productName);
         return this;
     }
@@ -137,13 +137,13 @@ public class P1_HomeList_Page {
     }
 
     @Step("Change Currency from Home Page: --> [{currencyName}]")
-    public P1_HomeList_Page changeCurrency(String currencyName) {
+    public P1_Home_Page changeCurrency(String currencyName) {
         ElementActions.select(driver, currency_dropDown, currencyName);
         return this;
     }
 
     @Step("Hover of the Category from Menu")
-    public P1_HomeList_Page selectCategoryFromMenuAndClickOn() {
+    public P1_Home_Page selectCategoryFromMenuAndClickOn() {
         /*        ElementActions.hover(driver, category_list(category));*/
         ElementActions.hoverAndClick(driver, category_menu, subCategory_menu);
         return this;

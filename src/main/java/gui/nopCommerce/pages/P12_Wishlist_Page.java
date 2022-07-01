@@ -1,4 +1,4 @@
-package nopCommerce.pages.gui;
+package gui.nopCommerce.pages;
 
 import org.openqa.selenium.WebDriver;
 

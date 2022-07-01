@@ -5,8 +5,8 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P8_ProductDetails_Page;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P8_ProductDetails_Page;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -40,9 +40,9 @@ public class T4_HomeList_test {
     @Issue("Bug_002")
     public void HL_001_UserCan_Hover_SubCategoryFromMenu() {
         String subCategoryName = home_TD.get().getTestData("SubCategoryName");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .selectCategoryFromMenuAndClickOn();
-        Validations.assertThat().element(driver.get(), P1_HomeList_Page.categoryName_pageTitle())
+        Validations.assertThat().element(driver.get(), P1_Home_Page.categoryName_pageTitle())
                 .text().contains(subCategoryName)
                 .withCustomReportMessage("Assert that the guest opened category And Get subcategory text")
                 .perform();
@@ -59,7 +59,7 @@ public class T4_HomeList_test {
     @Issue("Bug_002")
     public void HL_002_searchOfProductName_specificProduct() {
         String productName = home_TD.get().getTestData("ProductName");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .searchOfProduct(productName)
                 .openSearchResults()
                 .openProductDetails_Page();
@@ -80,7 +80,7 @@ public class T4_HomeList_test {
     @Issue("Bug_002")
     public void HL_003_searchOfProductName_AutoComplete() {
         String productName2 = home_TD.get().getTestData("ProductName2");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .searchOfProduct(productName2)
                 .openProductDetails_fromSearch(productName2);
         Validations.assertThat().element(driver.get(), P8_ProductDetails_Page.productName_details())
@@ -102,7 +102,7 @@ public class T4_HomeList_test {
     public void HL_004_searchOfProductName_Arrangement() {
         String productName3 = home_TD.get().getTestData("ProductName3");
         String numberOfProduct_searchList = home_TD.get().getTestData("NumberOfProduct");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .searchOfProduct(productName3)
                 .openProductDetails_fromSearchList(numberOfProduct_searchList);
         Validations.assertThat().element(driver.get(), P8_ProductDetails_Page.productName_details())

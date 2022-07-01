@@ -5,9 +5,9 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P3_Login_Page;
-import nopCommerce.pages.gui.P4_MyAccount_Page;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P3_Login_Page;
+import gui.nopCommerce.pages.P4_MyAccount_Page;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -49,10 +49,10 @@ public class T3_MyAccount_test {
         String password = register_TD.get().getTestData("Password");
         String newPassword = register_TD.get().getTestData("NewPassword");
         String expectedResult_ChangeMyPassword = myAccount_TD.get().getTestData("ExpectedResult_ChangeMyPassword");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openLogin_Page()
                 .loginViaEmail(email, password);
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openMyAccount_Page()
                 .openChangeMyPassword_Page()
                 .enterOLdPassword_TxtFd(password)
@@ -77,7 +77,7 @@ public class T3_MyAccount_test {
         String email = register_TD.get().getTestData("Email");
         String newPassword = register_TD.get().getTestData("NewPassword");
         String expectedResult_LoginProcess = login_TD.get().getTestData("ExpectedResult_LoginProcess");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openLogin_Page()
                 .loginViaEmail(email, newPassword);
         Validations.assertThat().element(driver.get(), P3_Login_Page.myAccount_txt()).text()

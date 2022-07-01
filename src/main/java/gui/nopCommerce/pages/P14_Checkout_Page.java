@@ -1,4 +1,4 @@
-package nopCommerce.pages.gui;
+package gui.nopCommerce.pages;
 
 import com.shaft.gui.element.ElementActions;
 import io.qameta.allure.Step;

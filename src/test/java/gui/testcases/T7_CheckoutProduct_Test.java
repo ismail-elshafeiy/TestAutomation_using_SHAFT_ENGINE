@@ -5,14 +5,13 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P14_Checkout_Page;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P2_Register_Page;
-import nopCommerce.pages.gui.P8_ProductDetails_Page;
+import gui.nopCommerce.pages.P14_Checkout_Page;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P2_Register_Page;
+import gui.nopCommerce.pages.P8_ProductDetails_Page;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -52,7 +51,7 @@ public class T7_CheckoutProduct_Test {
         String email = register_TD.get().getTestData("Email");
         String newPassword = register_TD.get().getTestData("NewPassword");
         String expectedResult_RegisterProcess = register_TD.get().getTestData("ExpectedResult_AlertMessage");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openRegister_Page()
                 .enterFirstName_TxtFd(firstName)
                 .enterLastName_TxtFd(lastName)
@@ -81,7 +80,7 @@ public class T7_CheckoutProduct_Test {
         String productName3 = home_TD.get().getTestData("ProductName3");
         String numberOfProduct_searchList = home_TD.get().getTestData("NumberOfProduct");
         String expectedResult_addToCartSuccess = productDetails_TD.get().getTestData("SuccessMessage_AddToCart");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openLogin_Page()
                 .loginViaEmail(email, newPassword)
                 .searchOfProduct(productName3)
@@ -114,7 +113,7 @@ public class T7_CheckoutProduct_Test {
         int shippingMethod = Integer.parseInt(checkout_TD.get().getTestData("ShippingOrder"));
         int paymentMethod = Integer.parseInt(checkout_TD.get().getTestData("PaymentOrder"));
         String expectedResult_CheckoutProcess = checkout_TD.get().getTestData("ExpectedResult_CheckoutProcess");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openLogin_Page()
                 .loginViaEmail(email, newPassword)
                 .openShoppingCart_Page()

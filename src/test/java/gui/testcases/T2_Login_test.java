@@ -5,8 +5,8 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P3_Login_Page;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P3_Login_Page;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -45,11 +45,12 @@ public class T2_Login_test {
         String password = register_TD.get().getTestData("Password");
         String state = login_TD.get().getTestData("RememberMe");
         String expectedResult_LoginProcess = login_TD.get().getTestData("ExpectedResult_LoginProcess");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openLogin_Page()
                 .selectRememberMe_ChkBx(state)
                 .loginViaEmail(email, password);
-        Validations.assertThat().element(driver.get(), P3_Login_Page.myAccount_txt()).text()
+        Validations.assertThat()
+                .element(driver.get(), P3_Login_Page.myAccount_txt()).text()
                 .contains(expectedResult_LoginProcess)
                 .withCustomReportMessage("Assert that the user logged in By Get My account text")
                 .perform();

@@ -5,8 +5,8 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P2_Register_Page;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P2_Register_Page;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -57,7 +57,7 @@ public class T1_Register_Test {
         String checkBoxNewsLetter = register_TD.get().getTestData("NewsLetter");
         String expectedResult_RegisterProcess = register_TD.get().getTestData("ExpectedResult_AlertMessage");
 
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openRegister_Page()
                 .chooseGender_RdBtn(gender)
                 .enterFirstName_TxtFd(firstName)
@@ -96,7 +96,7 @@ public class T1_Register_Test {
         String company = register_TD.get().getTestData("Company");
         String checkBoxNewsLetter = register_TD.get().getTestData("NewsLetter");
         String expectedResult_RegisterProcess = register_TD.get().getTestData("ExpectedResult_AlertMessage");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openRegister_Page()
                 .chooseGender_RdBtn(gender)
                 .enterFirstName_TxtFd(firstName)
@@ -135,7 +135,7 @@ public class T1_Register_Test {
         String company = register_TD.get().getTestData("Company");
         String checkBoxNewsLetter = register_TD.get().getTestData("NewsLetter");
         String expectedResult_RegisterProcess = register_TD.get().getTestData("ExpectedResult_AlertMessage");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openRegister_Page()
                 .chooseGender_RdBtn(gender)
                 .enterFirstName_TxtFd(firstName)
@@ -174,7 +174,7 @@ public class T1_Register_Test {
         String company = register_TD.get().getTestData("Company");
         String checkBoxNewsLetter = register_TD.get().getTestData("NewsLetter");
         String expectedResult_RegisterProcess = register_TD.get().getTestData("ExpectedResult_AlertMessage");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .openRegister_Page()
                 .chooseGender_RdBtn(gender)
                 .enterFirstName_TxtFd(firstName)

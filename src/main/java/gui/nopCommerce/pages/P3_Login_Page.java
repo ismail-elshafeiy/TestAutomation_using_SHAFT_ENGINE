@@ -1,4 +1,4 @@
-package nopCommerce.pages.gui;
+package gui.nopCommerce.pages;
 
 import com.shaft.gui.element.ElementActions;
 import io.qameta.allure.Step;
@@ -32,12 +32,12 @@ public class P3_Login_Page {
     /////////////////////////////////////////////////////////////////
 
     @Step("Enter Email [{ email }] And password [{ password }]")
-    public P1_HomeList_Page loginViaEmail(String email, String password) {
+    public P1_Home_Page loginViaEmail(String email, String password) {
         (new ElementActions(driver))
                 .type(email_TxtBox, email)
                 .type(password_TxtBox, password)
                 .keyPress(login_Btn, Keys.ENTER);
-        return new P1_HomeList_Page(driver);
+        return new P1_Home_Page(driver);
     }
 
     @Step("Select Remember Me ? {state}")

@@ -5,8 +5,8 @@ import com.shaft.gui.browser.BrowserActions;
 import com.shaft.tools.io.JSONFileManager;
 import com.shaft.validation.Validations;
 import io.qameta.allure.*;
-import nopCommerce.pages.gui.P1_HomeList_Page;
-import nopCommerce.pages.gui.P7_ContactUsPage;
+import gui.nopCommerce.pages.P1_Home_Page;
+import gui.nopCommerce.pages.P7_ContactUsPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -41,7 +41,7 @@ public class T5_ContactUs_test {
          String email = contactUs_TD.get().getTestData("Email");
          String  enquiry = contactUs_TD.get().getTestData("Enquiry");
          String expectedResult_successMessage = contactUs_TD.get().getTestData("ExpectedResult_successMessage");
-        new P1_HomeList_Page(driver.get()).navigateTo_HomePage()
+        new P1_Home_Page(driver.get()).navigateTo_HomePage()
                 .navigateToContactUs_Page()
                 .enterFullName_TxtFd(fullName)
                 .enterEmail_TxtFd(email)
