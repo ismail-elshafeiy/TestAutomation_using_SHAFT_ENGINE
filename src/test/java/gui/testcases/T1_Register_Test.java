@@ -77,7 +77,7 @@ public class T1_Register_Test {
     }
 
     @Story("S1_As a guest, I want to Sign Up Via Email")
-    @Test( description = "RE_001_Verify the Guest Can Register via Valid Data")
+    @Test(description = "RE_001_Verify the Guest Can Register via Valid Data")
     @Description("Given the browser is open, When the guest navigate to Home Page, And click on sign in linkText" +
             "And navigate to create account page, And Add new account registration data, Then navigate to Home page Again")
     @Severity(SeverityLevel.BLOCKER)

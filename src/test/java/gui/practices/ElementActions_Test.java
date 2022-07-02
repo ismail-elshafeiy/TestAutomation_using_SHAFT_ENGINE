@@ -20,7 +20,7 @@ public class ElementActions_Test {
         driver = DriverFactory.getDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(enabled = false)
     public void tearDown_fireFox(ITestResult result) {
         BrowserActions.closeCurrentWindow(driver);
     }
