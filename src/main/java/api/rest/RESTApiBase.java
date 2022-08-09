@@ -12,13 +12,11 @@ public class RESTApiBase {
 
     // Base URL
     public static final String BASE_URL = System.getProperty("baseUrl");
-
-    // Status Codes
-//    public static final int SUCCESS = 200;
-//    public static final int SUCCESS_DELETE = 201;
+    // Services Names
+    private String auth_serviceName = System.getProperty("authService");
 
     public enum StatusCode {
-        SUCCESS(200), SUCCESS_DELETE(201);
+        SUCCESS(200), SUCCESS_DELETE(201), NotFound(404), BadRequest(400), Unauthorized(401);
         private int code;
 
         StatusCode(int code) {
@@ -43,8 +41,6 @@ public class RESTApiBase {
         }
     }
 
-    // Services Names
-    private String auth_serviceName = "auth";
 
     // Constructor
     public RESTApiBase(RestActions restActions) {

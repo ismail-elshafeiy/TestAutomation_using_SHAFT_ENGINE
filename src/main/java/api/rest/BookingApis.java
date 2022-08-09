@@ -11,7 +11,9 @@ public class BookingApis {
     private RestActions restActions;
 
     // Services Name
-    private String booking_serviceName = "booking/";
+    // Services Names
+    private String booking_serviceName = System.getProperty("booking_serviceName");
+//    private String booking_serviceName = "booking/";
 
 
     // Constructor
@@ -23,13 +25,15 @@ public class BookingApis {
     //////////////////////////////////////////////////////
     /////////////      Business Actions      /////////////
     //////////////////////////////////////////////////////
+
+
     @Step("Get All Booking Ids")
-    public Response getBoookingIds() {
+    public Response getAllBookingIds() {
         return restActions.buildNewRequest(booking_serviceName, RestActions.RequestType.GET).performRequest();
     }
 
     @Step("Get and Filter the booking Ids by [{firstName}] and [{lastName}] ")
-    public Response getBookingIds(String firstName, String lastName) {
+    public Response getBookingId(String firstName, String lastName) {
         return restActions
                 .buildNewRequest(booking_serviceName, RestActions.RequestType.GET)
                 .setUrlArguments("firstname=" + firstName + "&lastname=" + lastName)

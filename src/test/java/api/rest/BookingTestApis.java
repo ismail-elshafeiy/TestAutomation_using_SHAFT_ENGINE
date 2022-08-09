@@ -10,13 +10,12 @@ import org.testng.annotations.Test;
 
 public class BookingTestApis {
 
-    private RestActions restActions;
     private RESTApiBase restApiBase;
     private BookingApis bookingApis;
 
     @BeforeClass
     public void setUp() {
-        restActions = DriverFactory.getAPIDriver(RESTApiBase.BASE_URL);
+        RestActions restActions = DriverFactory.getAPIDriver(RESTApiBase.BASE_URL);
         restApiBase = new RESTApiBase(restActions);
         bookingApis = new BookingApis(restActions);
         restApiBase.login("admin", "password123");
@@ -24,7 +23,7 @@ public class BookingTestApis {
 
     @Test
     public void getBookingIds() {
-        bookingApis.getBoookingIds();
+        bookingApis.getAllBookingIds();
     }
 
     @Test
@@ -70,7 +69,7 @@ public class BookingTestApis {
 
     @Test(dependsOnMethods = "createBooking")
     public void deleteBooking() {
-        Response getBookingId = bookingApis.getBookingIds("ismail", "ElShafeiy");
+        Response getBookingId = bookingApis.getBookingId("ismail", "ElShafeiy");
         String bookingId = RestActions.getResponseJSONValue(getBookingId, "bookingid[0]");
 
         Response deleteBooking = bookingApis.deleteBooking(bookingId);
