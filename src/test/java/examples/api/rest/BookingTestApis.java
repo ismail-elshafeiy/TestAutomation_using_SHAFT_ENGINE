@@ -1,6 +1,8 @@
-package api.rest;
+package examples.api.rest;
 
 
+import api.rest.BookingApis;
+import api.rest.RESTApiBase;
 import com.shaft.api.RestActions;
 import com.shaft.driver.DriverFactory;
 import com.shaft.validation.Validations;

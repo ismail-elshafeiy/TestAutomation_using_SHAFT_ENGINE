@@ -1,5 +1,6 @@
-package api.graphql;
+package examples.api.graphql;
 
+import api.graphql.SpacexApiObjectModel;
 import com.shaft.api.RestActions;
 import com.shaft.tools.io.JSONFileManager;
 import io.restassured.response.Response;

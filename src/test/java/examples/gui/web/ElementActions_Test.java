@@ -1,0 +1,90 @@
+package examples.gui.web;
+
+import com.shaft.gui.element.ElementActions;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
+public class ElementActions_Test extends BaseTests {
+
+	@Test
+	public void dragAndDropByOffset () {
+		driver.browser().navigateToURL("https://jqueryui.com/resources/demos/droppable/default.html");
+		By sourceElement = By.id("draggable");    // Locator to the element you want to drag
+		int xPos = 180;
+		int yPos = 30;
+		driver.element().dragAndDropByOffset(sourceElement, xPos, yPos);
+	}
+
+	@Test
+	public void dragAndDropByLocator () {
+		driver.browser().navigateToURL("https://jqueryui.com/resources/demos/droppable/default.html");
+		By source = By.id("draggable");
+		By target = By.id("droppable");
+		driver.element().dragAndDrop(source, target);
+	}
+
+	@Test
+	public void DoubleClick () {
+		By box = By.id("message");
+		driver.browser().navigateToURL("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
+		driver.element().getCSSProperty(box, "background-color");
+		driver.verifyThat().element(box)
+				.cssProperty("background-color").isEqualTo("rgba(0, 0, 255, 1)");
+		driver.element().doubleClick(box);
+		driver.verifyThat().element(box)
+				.cssProperty("background-color").isEqualTo("rgba(255, 255, 0, 1)");
+	}
+
+	@Test
+	public void getValueOfElement () {
+		driver.browser().navigateToURL("https://www.google.com/");
+		//The locator to your element
+		By googleSearchBox = By.cssSelector(".gLFyf.gsfi");
+		//get the value of the 'name' attribute
+		String elementName = driver.element().getAttribute(googleSearchBox, "name");
+		System.out.println("The name attribute of the element is: " + elementName);
+		driver.element().getCSSProperty(googleSearchBox, "width");
+		driver.element().getCSSProperty(googleSearchBox, "color");
+		driver.element().getCSSProperty(googleSearchBox, "font-size");
+		driver.element().getCSSProperty(googleSearchBox, "font-family");
+		driver.element().getCSSProperty(googleSearchBox, "font-weight");
+		driver.element().getCSSProperty(googleSearchBox, "font-style");
+		driver.element().getCSSProperty(googleSearchBox, "text-decoration");
+		driver.element().getCSSProperty(googleSearchBox, "text-align");
+		driver.element().getCSSProperty(googleSearchBox, "text-indent");
+		ElementActions.getSize(driver.getDriver(), googleSearchBox);
+	}
+
+	@Test
+	public void type () {
+		driver.browser().navigateToURL("https://the-internet.herokuapp.com/tinymce");
+		By textField = By.id("tinymce");
+		By textIFrame = By.id("mce_0_ifr");
+		// switch focus to IFrame containing the text field
+		driver.element().switchToIframe(textIFrame);
+		//append text to the end
+		driver.element().typeAppend(textField, "this is added text");
+		// copy the whole paragraph
+		driver.element().clipboardActions(textField, "select all");
+		driver.element().clipboardActions(textField, "copy");
+		//replace original text using type
+		driver.element().type(textField, "new text that overrides old content , ");
+		//paste previously copied paragraph
+		driver.element().clipboardActions(textField, "paste");
+	}
+
+	@Test
+	public void selectDropDown () {
+		driver.browser().navigateToURL("https://the-internet.herokuapp.com/dropdown");
+		By dropDown = By.id("dropdown");
+//		driver.element().getSelectedText(driver.getDriver().findElement(dropDown));
+//		driver.element().select(driver, dropDown, "Option 1");
+//
+//		Validations.verifyThat().element(dropDown).text().isEqualTo("Option 1").perform();
+//		driver.element().getSelectedText(dropDown);
+	}
+
+
+}

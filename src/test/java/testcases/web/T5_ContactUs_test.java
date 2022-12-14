@@ -1,4 +1,4 @@
-package gui.testcases;
+package testcases.web;
 
 import com.shaft.driver.DriverFactory;
 import com.shaft.gui.browser.BrowserActions;

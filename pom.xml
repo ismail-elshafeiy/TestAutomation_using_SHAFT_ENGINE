@@ -11,7 +11,7 @@
     <url>https://github.com/ismail-elshafeiy</url>
 
     <properties>
-        <shaft_engine.version>6.2.20220609</shaft_engine.version>
+        <shaft_engine.version>6.4.20221108</shaft_engine.version>
     </properties>
     <repositories>
         <repository>
@@ -25,7 +25,7 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>io.github.mohabmohie</groupId>
+            <groupId>io.github.shafthq</groupId>
             <artifactId>SHAFT_ENGINE</artifactId>
             <version>${shaft_engine.version}</version>
         </dependency>
@@ -61,7 +61,7 @@
                     <encoding>UTF-8</encoding>
                     <argLine>
                         -Dtestng.dtd.http=true
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.7/aspectjweaver-1.9.7.jar"
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
                     </argLine>
                     <properties>
                         <property>

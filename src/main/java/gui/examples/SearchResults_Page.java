@@ -1,4 +1,4 @@
-package gui.practices;
+package gui.examples;
 
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.gui.element.ElementActions;

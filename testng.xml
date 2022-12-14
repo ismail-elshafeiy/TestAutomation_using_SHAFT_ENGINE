@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test name="TestAutomation_using_SHAFT_ENGINE">
         <classes>
-            <class name="gui.testcases.T1_Register_Test">
+            <class name="gui.testcases.web.T1_Register_Test">
                 <methods>
                     <include name="RE_001_GuestRegister_viaValidEmail"/>
                     <include name="RE_001_GuestRegister_viaValidEmail1"/>
@@ -11,18 +11,18 @@
                     <include name="RE_001_GuestRegister_viaValidEmail3"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T2_Login_test">
+            <class name="gui.testcases.web.T2_Login_test">
                 <methods>
                     <include name="LO_001_UserLogin_viaValidEmail"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T3_MyAccount_test">
+            <class name="gui.testcases.web.T3_MyAccount_test">
                 <methods>
                     <include name="MA_001_user_changeMyPassword"/>
                     <include name="MA_002_UserLogin_viaNewPassword"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T4_HomeList_test">
+            <class name="gui.testcases.web.T4_HomeList_test">
                 <methods>
                     <include name="HL_001_UserCan_Hover_SubCategoryFromMenu"/>
                     <include name="HL_002_searchOfProductName_specificProduct"/>
@@ -30,12 +30,12 @@
                     <include name="HL_004_searchOfProductName_Arrangement"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T5_ContactUs_test">
+            <class name="gui.testcases.web.T5_ContactUs_test">
                 <methods>
                     <include name="CO_001_guestCanContactWithAdmin"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T6_ProductDetails_test">
+            <class name="gui.testcases.web.T6_ProductDetails_test">
                 <methods>
                     <include name="RE_001_GuestRegister_viaValidEmail"/>
                     <include name="PD_001_guestCan_Add_ProductToCart"/>
@@ -43,7 +43,7 @@
                     <include name="PD_003_UserCan_Send_ProductToFriend"/>
                 </methods>
             </class>
-            <class name="gui.testcases.T7_CheckoutProduct_Test">
+            <class name="gui.testcases.web.T7_CheckoutProduct_Test">
                 <methods>
                     <include name="RE_001_GuestRegister_viaValidEmail"/>
                     <include name="PD_001_UserCan_Add_ProductToCart"/>
