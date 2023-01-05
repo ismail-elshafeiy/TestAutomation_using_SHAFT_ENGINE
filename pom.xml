@@ -11,7 +11,7 @@
     <url>https://github.com/ismail-elshafeiy</url>
 
     <properties>
-        <shaft_engine.version>6.4.20221108</shaft_engine.version>
+        <shaft_engine.version>7.1.20230104</shaft_engine.version>
     </properties>
     <repositories>
         <repository>
