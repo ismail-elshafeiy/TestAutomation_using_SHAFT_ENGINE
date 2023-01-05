@@ -1,12 +1,49 @@
 package examples.gui.web;
 
 import com.shaft.gui.element.ElementActions;
+import com.shaft.tools.io.ReportManager;
+import jdk.jfr.Description;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ElementActions_Test extends BaseTests {
+	@Test
+	@Description("""
+			 Using Actions Class to perform a Click on element and Hold it
+			 	then goes to specific location or and Release the Hold button
+				Mainly used in horizontal bars , Draw something in Canvas
+			""")
+	public void ClickAndHoldByLocator () {
+		driver.browser().navigateToURL("https://the-internet.herokuapp.com/horizontal_slider");
+		driver.element().clickAndHold(By.xpath("//input[@type='range']"));
+	}
+
+
+	@Test
+	public void hoverAndHoverThenClick () {
+		List<By> hoverLocators = new ArrayList<By>();
+		By car = By.linkText("Car");
+		hoverLocators.add(By.linkText("Popular Toys"));
+		hoverLocators.add(By.xpath("//a[contains(text(),'Video Games ') ] "));
+		driver.browser().navigateToURL("https://phppot.com/demo/multilevel-dropdown-menu-with-pure-css/");
+		driver.element().hoverAndClick(hoverLocators, car);
+	}
+
+	@Test
+	public void DoubleClick () {
+		By box = By.id("message");
+		driver.browser().navigateToURL("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
+		driver.element().getCSSProperty(box, "background-color");
+		driver.verifyThat().element(box)
+				.cssProperty("background-color").isEqualTo("rgba(0, 0, 255, 1)");
+		driver.element().doubleClick(box);
+		driver.verifyThat().element(box)
+				.cssProperty("background-color").isEqualTo("rgba(255, 255, 0, 1)");
+	}
 
 	@Test
 	public void dragAndDropByOffset () {
@@ -23,18 +60,6 @@ public class ElementActions_Test extends BaseTests {
 		By source = By.id("draggable");
 		By target = By.id("droppable");
 		driver.element().dragAndDrop(source, target);
-	}
-
-	@Test
-	public void DoubleClick () {
-		By box = By.id("message");
-		driver.browser().navigateToURL("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
-		driver.element().getCSSProperty(box, "background-color");
-		driver.verifyThat().element(box)
-				.cssProperty("background-color").isEqualTo("rgba(0, 0, 255, 1)");
-		driver.element().doubleClick(box);
-		driver.verifyThat().element(box)
-				.cssProperty("background-color").isEqualTo("rgba(255, 255, 0, 1)");
 	}
 
 	@Test
@@ -57,11 +82,12 @@ public class ElementActions_Test extends BaseTests {
 		ElementActions.getSize(driver.getDriver(), googleSearchBox);
 	}
 
+
 	@Test
-	public void type () {
-		driver.browser().navigateToURL("https://the-internet.herokuapp.com/tinymce");
+	void clipboardActions () {
 		By textField = By.id("tinymce");
 		By textIFrame = By.id("mce_0_ifr");
+		driver.browser().navigateToURL("https://the-internet.herokuapp.com/tinymce");
 		// switch focus to IFrame containing the text field
 		driver.element().switchToIframe(textIFrame);
 		//append text to the end
@@ -77,14 +103,29 @@ public class ElementActions_Test extends BaseTests {
 
 	@Test
 	public void selectDropDown () {
-		driver.browser().navigateToURL("https://the-internet.herokuapp.com/dropdown");
 		By dropDown = By.id("dropdown");
-//		driver.element().getSelectedText(driver.getDriver().findElement(dropDown));
-//		driver.element().select(driver, dropDown, "Option 1");
-//
-//		Validations.verifyThat().element(dropDown).text().isEqualTo("Option 1").perform();
-//		driver.element().getSelectedText(dropDown);
+		driver.browser().navigateToURL("https://the-internet.herokuapp.com/dropdown");
+		driver.element().select(dropDown, "Option 1");
+		driver.element().select(dropDown, "Option 2");
 	}
 
 
+	@Test
+	public void alternate() {
+		By textField=By.xpath("//form[@id='input-example']/input");
+		By changeState=By.xpath("//form[@id='input-example']/button");
+		driver.browser().navigateToURL( "https://the-internet.herokuapp.com/dynamic_controls");
+		//--1-- check that initially the text box is not clickable
+		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
+		//--2-- press the button to enable the text box
+		driver.element().click(changeState);
+		//--3-- check again whether the text box is clickable
+		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
+		//--4-- attempt to click on the text box
+		driver.element().click(textField);
+		//--5-- finally verify the state of the check box
+		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
+		driver.element().type( textField, "SHAFT is awesome !");
+	}
 }
+

@@ -22,6 +22,11 @@ public class BrowserInteraction extends BaseTests {
 				.refreshCurrentPage()
 				.navigateBack().getCurrentURL();
 		driver.browser().getCurrentWindowTitle();
+		driver.verifyThat().browser()
+				.attribute("title")
+				.contains("W3Schools")
+				.withCustomReportMessage("Test The title of the page is not as expected")
+				.perform();
 	}
 
 	@Story("Window management ")
@@ -34,6 +39,11 @@ public class BrowserInteraction extends BaseTests {
 				.switchToWindow(parentWindow)
 				.getWindowPosition();
 		driver.browser().capturePageSnapshot();
+		driver.verifyThat().browser()
+				.attribute("title")
+				.isEqualTo("W3Schools Online Web Tutorials")
+				.withCustomReportMessage("Test The title of the page is not as expected")
+				.perform();
 	}
 	@Story("Window management ")
 	@Test
