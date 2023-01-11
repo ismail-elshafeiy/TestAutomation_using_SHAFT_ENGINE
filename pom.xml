@@ -9,9 +9,9 @@
     <name>Web-NopCommerce_TestAutomation</name>
     <description>Selenium Automation Framework for Testing</description>
     <url>https://github.com/ismail-elshafeiy</url>
-
     <properties>
-        <shaft_engine.version>6.4.20221108</shaft_engine.version>
+        <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
+        <shaft_engine.version>7.1.20230104</shaft_engine.version>
     </properties>
     <repositories>
         <repository>
@@ -41,7 +41,7 @@
                     <target>17</target>
                     <encoding>UTF-8</encoding>
                     <maxmem>10240m</maxmem>
-                    <meminitial>10240m</meminitial>
+                    <meminitial>1024m</meminitial>
                 </configuration>
             </plugin>
             <plugin>
@@ -52,7 +52,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>1.9.9.1</version>
+                        <version>1.9.7</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -61,7 +61,7 @@
                     <encoding>UTF-8</encoding>
                     <argLine>
                         -Dtestng.dtd.http=true
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.7/aspectjweaver-1.9.7.jar"
                     </argLine>
                     <properties>
                         <property>
@@ -71,7 +71,7 @@
                         <property>
                             <name>listener</name>
                             <value>
-                                com.shaft.tools.listeners.AlterSuiteListener,com.shaft.tools.listeners.SuiteListener,com.shaft.tools.listeners.InvokedMethodListener,com.shaft.tools.listeners.CucumberFeatureListener
+                                io.github.shafthq.shaft.listeners.TestNGListener
                             </value>
                         </property>
                     </properties>
@@ -79,4 +79,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
