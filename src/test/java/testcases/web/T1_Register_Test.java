@@ -32,7 +32,6 @@ public class T1_Register_Test {
     @AfterMethod
     public void tearDown_AfterMethod(ITestResult result) {
         BrowserActions.closeCurrentWindow(driver.get());
-
     }
 
 

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 @Feature("Windows")
 public class BrowserInteraction extends BaseTests {
 
-	@Story("Window management ")
+	@Story("Window management")
 	@Test
 	public void testWindowActions1 () {
 		driver.browser()

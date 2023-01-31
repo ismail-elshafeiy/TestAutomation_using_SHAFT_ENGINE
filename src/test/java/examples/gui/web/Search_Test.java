@@ -1,16 +1,20 @@
 package examples.gui.web;
+
+import com.shaft.driver.SHAFT;
 import com.shaft.validation.Validations;
 import gui.examples.Google_Page;
 import gui.examples.SearchResults_Page;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class Search_Test extends BaseTests {
 
 	@Test(groups = "Chrome")
 	public void verifySearch_ResizeWindow () {
-		driver.browser().setWindowSize(600, 466);
+		driver.browser()
+				.setWindowSize(600, 466);
 		new Google_Page(driver.getDriver()).navigateTo_googlePage()
 				.searchByTextAndIndexList("Selenium WebDriver");
 		By searchResult_txt = By.xpath("//div[@id='result-stats']");
@@ -22,7 +26,7 @@ public class Search_Test extends BaseTests {
 	@Test(groups = "Firefox")
 	public void searchForFourthResult_RunTest_FireFox () {
 
-		String searchKeyword = "TestNG";
+		String searchKeyword = excelFileTestDataReader.getCellData("Sheet2","search","Data2");
 		String indexInList = "1";
 		String indexInPage = "4";
 		String expectedResult_searchResult = "TestNG Tutorial";
@@ -35,5 +39,11 @@ public class Search_Test extends BaseTests {
 				.perform();
 	}
 
+	private SHAFT.TestData.EXCEL excelFileTestDataReader;
+
+	@BeforeClass
+	public void beforeClass () {
+		excelFileTestDataReader = new SHAFT.TestData.EXCEL(System.getProperty("testDataFolderPath") + "testData.xlsx");
+	}
 
 }
