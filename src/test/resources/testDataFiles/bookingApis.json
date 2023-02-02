@@ -1,11 +1,13 @@
 {
-  "firstname": "ismail",
-  "lastname": "ElShafeiy",
-  "totalprice": 1000,
-  "depositpaid": true,
-  "bookingdates": {
-    "checkin": "2022-07-01",
-    "checkout": "2022-07-10"
-  },
-  "additionalneeds": "IceCream"
+  "booking": {
+    "firstname": "ismail",
+    "lastname": "ElShafeiy",
+    "totalprice": 1000,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2022-07-01",
+      "checkout": "2022-07-10"
+    },
+    "additionalneeds": "IceCream"
+  }
 }
