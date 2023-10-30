@@ -1,5 +1,6 @@
 package gui.examples;
 
+import com.shaft.driver.SHAFT;
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.gui.element.ElementActions;
 import io.qameta.allure.Step;
@@ -8,10 +9,10 @@ import org.openqa.selenium.WebDriver;
 
 public class SearchResults_Page {
     // driver
-    private static WebDriver driver;
+    private static SHAFT.GUI.WebDriver driver;
 
     // Constructor
-    public SearchResults_Page(WebDriver driver) {
+    public SearchResults_Page(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
@@ -41,7 +42,7 @@ public class SearchResults_Page {
      */
 
     public static String getTextSearchResults(String index) {
-        return ElementActions.getText(driver, getSearchResultsNumber(index));
+        return driver.element().getText(getSearchResultsNumber(index));
     }
 
     /**
@@ -51,14 +52,14 @@ public class SearchResults_Page {
      * @return self reference
      */
     public SearchResults_Page navigateTo_cucumberSearchResult(String index) {
-        ElementActions.click(driver, getSearchResultsNumber(index));
+        driver.element().click(getSearchResultsNumber(index));
         return this;
     }
 
 
     @Step("Get Current Page URL")
     public static String getCurrentPage_Url() {
-        return BrowserActions.getCurrentURL(driver);
+        return driver.browser().getCurrentURL();
     }
 
 }

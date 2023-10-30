@@ -1,0 +1,62 @@
+#start grid: at the root; run (docker-compose -f src/test/resources/selenium4.yml up --scale chrome=4 --remove-orphans -d)
+#run test: at the root; run (mvn test -DexecutionAddress="localhost:4444" -DtargetOperatingSystem="Linux-64" -DmaximumPerformanceMode="2")
+#end grid: at the root; run (docker-compose -f src/test/resources/selenium4.yml down --remove-orphans)
+#open the following url to monitor: http://localhost:4444/grid/console
+
+version: "3"
+services:
+
+  selenium-hub:
+    image: selenium/hub:4.1.4
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    environment:
+      GRID_MAX_SESSION: 10
+      GRID_BROWSER_TIMEOUT: 3000
+      GRID_TIMEOUT: 3000
+
+  chrome:
+    image: selenium/node-chrome:4.1.4
+    depends_on:
+      - selenium-hub
+    shm_size: 2gb
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      SE_EVENT_BUS_HOST: selenium-hub
+      SE_EVENT_BUS_PUBLISH_PORT: 4442
+      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
+      # set false for headless execution
+      START_XVFB: "false"
+      NODE_MAX_SESSION: 4
+      NODE_MAX_INSTANCES: 4
+
+    # firefox:
+    #   image: selenium/node-firefox:4.1.4
+    #   depends_on:
+    #      - selenium-hub
+    #   shm_size: 2gb
+    #   volumes:
+    #      - /dev/shm:/dev/shm
+    #
+    #   environment:
+    #      SE_EVENT_BUS_HOST: selenium-hub
+    #      SE_EVENT_BUS_PUBLISH_PORT: 4442
+    #      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
+    #      set false for headless execution
+    #      START_XVFB: "false"
+    #      NODE_MAX_SESSION: 4
+    #      NODE_MAX_INSTANCES: 4
+
+#    edge:
+#      image: selenium/node-edge:4.1.4
+#      shm_size: 2gb
+#      depends_on:
+#        - selenium-hub
+#      environment:
+#        - SE_EVENT_BUS_HOST=selenium-hub
+#        - SE_EVENT_BUS_PUBLISH_PORT=4442
+#        - SE_EVENT_BUS_SUBSCRIBE_PORT=4443

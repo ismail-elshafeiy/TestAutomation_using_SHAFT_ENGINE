@@ -1,5 +1,6 @@
 package examples.gui.web;
 
+import com.shaft.enums.internal.ClipboardAction;
 import com.shaft.gui.element.ElementActions;
 import com.shaft.tools.io.ReportManager;
 import jdk.jfr.Description;
@@ -79,7 +80,7 @@ public class ElementActions_Test extends BaseTests {
 		driver.element().getCSSProperty(googleSearchBox, "text-decoration");
 		driver.element().getCSSProperty(googleSearchBox, "text-align");
 		driver.element().getCSSProperty(googleSearchBox, "text-indent");
-		ElementActions.getSize(driver.getDriver(), googleSearchBox);
+		driver.browser().getWindowSize();
 	}
 
 
@@ -93,12 +94,12 @@ public class ElementActions_Test extends BaseTests {
 		//append text to the end
 		driver.element().typeAppend(textField, "this is added text");
 		// copy the whole paragraph
-		driver.element().clipboardActions(textField, "select all");
-		driver.element().clipboardActions(textField, "copy");
+		driver.element().clipboardActions(textField, ClipboardAction.SELECT_ALL);
+		driver.element().clipboardActions(textField, ClipboardAction.COPY);
 		//replace original text using type
 		driver.element().type(textField, "new text that overrides old content , ");
 		//paste previously copied paragraph
-		driver.element().clipboardActions(textField, "paste");
+		driver.element().clipboardActions(textField, ClipboardAction.PASTE);
 	}
 
 	@Test
@@ -110,22 +111,6 @@ public class ElementActions_Test extends BaseTests {
 	}
 
 
-	@Test
-	public void alternate() {
-		By textField=By.xpath("//form[@id='input-example']/input");
-		By changeState=By.xpath("//form[@id='input-example']/button");
-		driver.browser().navigateToURL( "https://the-internet.herokuapp.com/dynamic_controls");
-		//--1-- check that initially the text box is not clickable
-		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
-		//--2-- press the button to enable the text box
-		driver.element().click(changeState);
-		//--3-- check again whether the text box is clickable
-		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
-		//--4-- attempt to click on the text box
-		driver.element().click(textField);
-		//--5-- finally verify the state of the check box
-		ReportManager.log(String.valueOf(ElementActions.isElementClickable(driver.getDriver(), textField)));
-		driver.element().type( textField, "SHAFT is awesome !");
-	}
+
 }
 

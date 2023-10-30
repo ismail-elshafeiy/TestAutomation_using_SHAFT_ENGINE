@@ -13,9 +13,8 @@ public class Search_Test extends BaseTests {
 
 	@Test(groups = "Chrome")
 	public void verifySearch_ResizeWindow () {
-		driver.browser()
-				.setWindowSize(600, 466);
-		new Google_Page(driver.getDriver()).navigateTo_googlePage()
+		driver.browser().setWindowSize(600, 466);
+		new Google_Page(driver).navigateTo_googlePage()
 				.searchByTextAndIndexList("Selenium WebDriver");
 		By searchResult_txt = By.xpath("//div[@id='result-stats']");
 		var getSearchResults = driver.getDriver().findElement(searchResult_txt).getText();
@@ -26,11 +25,11 @@ public class Search_Test extends BaseTests {
 	@Test(groups = "Firefox")
 	public void searchForFourthResult_RunTest_FireFox () {
 
-		String searchKeyword = excelFileTestDataReader.getCellData("Sheet2","search","Data2");
+		String searchKeyword = excelFileTestDataReader.getCellData("sheet2","search","Data2");
 		String indexInList = "1";
 		String indexInPage = "4";
 		String expectedResult_searchResult = "TestNG Tutorial";
-		new Google_Page(driver.getDriver()).navigateTo_googlePage()
+		new Google_Page(driver).navigateTo_googlePage()
 				.searchByTextAndIndexList(searchKeyword, indexInList);
 
 		Validations.assertThat().element(driver.getDriver(),

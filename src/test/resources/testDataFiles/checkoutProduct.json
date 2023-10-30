@@ -1,0 +1,15 @@
+{
+  "ProductName": "Mac",
+
+  "SuccessMessage_AddToCart": "The product has been added to your shopping cart",
+  "State": "Check",
+  "Country": "Egypt",
+  "City": "Cairo",
+  "Address1": "Masr Al-Gidida",
+  "PostalCode": "123456",
+  "PhoneNumber": "01005111998",
+  "ShippingOrder": "0",
+  "PaymentOrder": 0,
+  "ExpectedResult_CheckoutProcess": "Your order has been successfully processed!"
+
+}

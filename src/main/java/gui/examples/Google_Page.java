@@ -1,5 +1,6 @@
 package gui.examples;
 
+import com.shaft.driver.SHAFT;
 import com.shaft.gui.browser.BrowserActions;
 import com.shaft.gui.element.ElementActions;
 import io.qameta.allure.Step;
@@ -13,10 +14,11 @@ import java.io.IOException;
 
 public class Google_Page {
     // driver
-    private static WebDriver driver;
+
+    private static SHAFT.GUI.WebDriver driver;
 
     // Constructor
-    public Google_Page(WebDriver driver) {
+    public Google_Page(SHAFT.GUI.WebDriver driver) {
         Google_Page.driver = driver;
     }
 
@@ -45,7 +47,7 @@ public class Google_Page {
      */
     @Step("Navigate to Home Page")
     public Google_Page navigateTo_googlePage() {
-        BrowserActions.navigateToURL(driver, "https://www.google.com/");
+        driver.browser().navigateToURL("https://www.google.com/");
         return this;
     }
 
@@ -56,7 +58,7 @@ public class Google_Page {
      */
     @Step("Get Title Page")
     public static String getTitle_Page() {
-        return BrowserActions.getCurrentWindowTitle(driver);
+        return driver.browser().getCurrentWindowTitle();
     }
 
     /**
@@ -66,7 +68,7 @@ public class Google_Page {
      */
     @Step("Get Current Page URL")
     public static String getCurrentPage_Url() {
-        return BrowserActions.getCurrentURL(driver);
+        return driver.browser().getCurrentURL();
     }
 
     /**
@@ -78,7 +80,7 @@ public class Google_Page {
     public static boolean isGoogleLogoDisplayed(String logoName) throws IOException {
 
 
-        return ElementActions.isElementDisplayed(driver, googleLogo_image);
+        return driver.element().isElementDisplayed(googleLogo_image);
     }
 //    @Step("Check logo is displayed?")
 //    public static boolean isGoogleLogoDisplayed(String logoName) throws IOException {
@@ -120,8 +122,8 @@ public class Google_Page {
      */
 
     public SearchResults_Page searchByTextAndIndexList(String searchKeyWord) {
-        ElementActions.type(driver, search_textBx, searchKeyWord);
-        ElementActions.keyPress(driver, search_textBx, Keys.ENTER);
+        driver.element().type(search_textBx, searchKeyWord);
+        driver.element().keyPress(search_textBx, Keys.ENTER);
         return new SearchResults_Page(driver);
     }
 
@@ -133,14 +135,14 @@ public class Google_Page {
      */
 
     public SearchResults_Page searchByTextAndIndexList(String searchKeyword, String indexList) {
-        ElementActions.type(driver, search_textBx, searchKeyword);
-        ElementActions.click(driver, inputOrdinalNumber_SearchList(indexList));
+        driver.element().type(search_textBx, searchKeyword);
+        driver.element().click(inputOrdinalNumber_SearchList(indexList));
         return new SearchResults_Page(driver);
     }
 
     public SearchResults_Page searchByTestAndIndexList_autoSuggest(String searchKeyword, String indexList) {
-        ElementActions.type(driver, search_textBx, searchKeyword);
-        ElementActions.click(driver, findByTextAndIndexList(searchKeyword, indexList));
+        driver.element().type(search_textBx, searchKeyword);
+        driver.element().click(findByTextAndIndexList(searchKeyword, indexList));
         return new SearchResults_Page(driver);
     }
 
