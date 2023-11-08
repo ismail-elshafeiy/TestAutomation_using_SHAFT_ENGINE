@@ -1,13 +1,14 @@
-package examples.gui.web;
+package examples.files;
 
 import com.shaft.driver.SHAFT;
+import examples.gui.web.BaseTests;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class TestDataDriven extends BaseTests{
+public class TestDataDriven extends BaseTests {
 	private By usernameField = By.id("username");
 	private By passwordField = By.id("password");
 	private By loginButton = By.cssSelector("#login button");
