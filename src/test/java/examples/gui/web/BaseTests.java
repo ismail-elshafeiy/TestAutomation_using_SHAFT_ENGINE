@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTests {
+	//public ThreadLocal<SHAFT.GUI.WebDriver> driver = new ThreadLocal<>();
 	public SHAFT.GUI.WebDriver driver;
 	public SHAFT.TestData.EXCEL excelReader;
 	public SHAFT.TestData.JSON jsonReader;

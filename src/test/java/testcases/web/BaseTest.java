@@ -1,10 +1,12 @@
 package testcases.web;
 
+import com.shaft.cli.TerminalActions;
 import com.shaft.driver.SHAFT;
 import com.shaft.tools.io.JSONFileManager;
 import gui.nopCommerce.pages.HomePage;
 import gui.nopCommerce.pages.RegisterPage;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -31,13 +33,19 @@ public class BaseTest {
 
     @BeforeMethod(description = "Before Method - Initialize browser")
     public void setUp() {
+        SHAFT.Properties.performance.set().isEnabled(true);
         driver = new SHAFT.GUI.WebDriver();
     }
 
     @AfterMethod(description = "After Method - Close browser")
     public void tearDown() {
+        //SHAFT.Properties.performance.set().isEnabled(true);
         driver.browser().capturePageSnapshot();
         driver.browser().captureSnapshot();
         driver.quit();
+    }
+    @AfterSuite(description = "After Suite - Close browser")
+    public void generateAllureReportHTM() {
+        TerminalActions.getInstance().performTerminalCommand("allure generate --single-file allure-results -o allure-report");
     }
 }
