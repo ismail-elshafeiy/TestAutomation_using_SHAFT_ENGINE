@@ -1,21 +1,13 @@
-package testcases.web;
+package nopCommerce.tests;
 
-import com.shaft.driver.DriverFactory;
-import com.shaft.gui.browser.BrowserActions;
-import com.shaft.tools.io.JSONFileManager;
-import com.shaft.validation.Validations;
 import io.qameta.allure.*;
 import gui.nopCommerce.pages.CheckoutPage;
 import gui.nopCommerce.pages.HomePage;
 import gui.nopCommerce.pages.RegisterPage;
 import gui.nopCommerce.pages.ProductDetailsPage;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CheckoutProduct_Test extends BaseTest{
+public class CheckoutProduct_test extends BaseTest {
 
 
     @Story("S1_As a guest,I want to Sign Up Via Email")

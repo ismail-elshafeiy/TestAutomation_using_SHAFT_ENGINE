@@ -6,6 +6,7 @@ updates:
     interval: "weekly"
     day: "friday"
     time: "01:00"
+    timezone: "Africa/Cairo"
   open-pull-requests-limit: 10
   target-branch: master
 
@@ -15,5 +16,6 @@ updates:
     interval: daily
     day: "friday"
     time: "01:00"
+    timezone: "Africa/Cairo"
   open-pull-requests-limit: 10
   target-branch: master
