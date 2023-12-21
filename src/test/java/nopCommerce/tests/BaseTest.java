@@ -1,10 +1,7 @@
-package testcases.web;
+package nopCommerce.tests;
 
 import com.shaft.cli.TerminalActions;
 import com.shaft.driver.SHAFT;
-import com.shaft.tools.io.JSONFileManager;
-import gui.nopCommerce.pages.HomePage;
-import gui.nopCommerce.pages.RegisterPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -47,5 +44,6 @@ public class BaseTest {
     @AfterSuite(description = "After Suite - Close browser")
     public void generateAllureReportHTM() {
         TerminalActions.getInstance().performTerminalCommand("allure generate --single-file allure-results -o allure-report");
+       // TerminalActions.getInstance().performTerminalCommand("allure serve allure-results");
     }
 }

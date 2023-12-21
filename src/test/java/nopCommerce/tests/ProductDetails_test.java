@@ -1,10 +1,11 @@
-package testcases.web;
+package nopCommerce.tests;
 
 import io.qameta.allure.*;
 import gui.nopCommerce.pages.HomePage;
 import gui.nopCommerce.pages.RegisterPage;
 import gui.nopCommerce.pages.ProductDetailsPage;
 import gui.nopCommerce.pages.EmailFriendPage;
+import nopCommerce.tests.BaseTest;
 import org.testng.annotations.Test;
 
 @Epic("EP3_ProductDetails")

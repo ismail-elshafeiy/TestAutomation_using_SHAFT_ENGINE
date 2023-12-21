@@ -85,6 +85,15 @@ Pre-requisites: jdk-17 and maven should be installed
 ```bash 
 mvn clean test
 ```
+```bash 
+mvn clean test
+```
+```bash 
+mvn -Dtest="nopCommerce.tests.**" test
+```
+```bash
+
+```
 
 * After executing,The report will be generated automatically after running the test.
 * Find the Extent Report [ExtentReports.html](ExtentReports.html) in the project root path for the latest execution and
