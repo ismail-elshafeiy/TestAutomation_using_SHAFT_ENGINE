@@ -1,6 +1,8 @@
 package nopCommerce.tests;
 
+import com.shaft.cli.FileActions;
 import com.shaft.cli.TerminalActions;
+import com.shaft.driver.DriverFactory;
 import com.shaft.driver.SHAFT;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -19,18 +21,19 @@ public class BaseTest {
 
     @BeforeClass(description = "Before Suite - Setup test data")
     public void readTestBaseData() {
+        FileActions.getInstance().deleteFolder("allure-report");
         home_TD = new SHAFT.TestData.JSON(System.getProperty("homeJson"));
         register_TD = new SHAFT.TestData.JSON(System.getProperty("registerUserJson"));
         login_TD = new SHAFT.TestData.JSON(System.getProperty("loginJson"));
         myAccount_TD = new SHAFT.TestData.JSON(System.getProperty("myAccountJson"));
-        contactUs_TD=new SHAFT.TestData.JSON(System.getProperty("contactUsJson"));
-        productDetails_TD=new SHAFT.TestData.JSON(System.getProperty("productDetailsJson"));
-        checkout_TD=new SHAFT.TestData.JSON(System.getProperty("checkoutJson"));
+        contactUs_TD = new SHAFT.TestData.JSON(System.getProperty("contactUsJson"));
+        productDetails_TD = new SHAFT.TestData.JSON(System.getProperty("productDetailsJson"));
+        checkout_TD = new SHAFT.TestData.JSON(System.getProperty("checkoutJson"));
+
     }
 
     @BeforeMethod(description = "Before Method - Initialize browser")
     public void setUp() {
-        SHAFT.Properties.performance.set().isEnabled(true);
         driver = new SHAFT.GUI.WebDriver();
     }
 

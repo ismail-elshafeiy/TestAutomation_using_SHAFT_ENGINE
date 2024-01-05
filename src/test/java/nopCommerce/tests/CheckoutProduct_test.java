@@ -32,11 +32,11 @@ public class CheckoutProduct_test extends BaseTest {
                 .enterPassword_TxtFd(newPassword)
                 .enterConfirmPassword_TxtFd(newPassword)
                 .clickOn_RegisterButton();
-        driver.verifyThat()
-                .element(RegisterPage.register_SuccessMessage()).text()
+        driver.verifyThat().element( RegisterPage.register_SuccessMessage()).text()
                 .contains(expectedResult_RegisterProcess)
                 .withCustomReportMessage("Assert that the new account created By Get Success Message text of 'Register' process")
                 .perform();
+
     }
 
     @Story("S3_As a guest, I want to Add Product to cart")
