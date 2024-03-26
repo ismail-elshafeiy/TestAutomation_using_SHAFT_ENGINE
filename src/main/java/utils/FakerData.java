@@ -22,6 +22,12 @@ public class FakerData {
     public static String getLastName() {
         return faker.name().lastName();
     }
+    public static String getEmail() {
+        return faker.internet().emailAddress();
+    }
+    public static String getPassword() {
+        return faker.internet().password();
+    }
 
     public static String getFullName() {
         return faker.name().fullName();

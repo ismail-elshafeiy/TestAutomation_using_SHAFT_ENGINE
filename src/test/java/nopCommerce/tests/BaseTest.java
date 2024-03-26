@@ -4,10 +4,9 @@ import com.shaft.cli.FileActions;
 import com.shaft.cli.TerminalActions;
 import com.shaft.driver.DriverFactory;
 import com.shaft.driver.SHAFT;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import gui.nopCommerce.pages.HomePage;
+import org.testng.annotations.*;
+import utils.FakerData;
 
 public class BaseTest {
     public SHAFT.GUI.WebDriver driver;
@@ -18,10 +17,22 @@ public class BaseTest {
     public SHAFT.TestData.JSON contactUs_TD;
     public SHAFT.TestData.JSON productDetails_TD;
     public SHAFT.TestData.JSON checkout_TD;
+    public static String email, password;
 
-    @BeforeClass(description = "Before Suite - Setup test data")
+    @BeforeSuite(description = "Before Suite - Register via new user")
+    public void registerNewUser() {
+        driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME);
+        email = FakerData.getEmail();
+        password = FakerData.getPassword();
+        new HomePage(driver)
+                .navigateTo_HomePage()
+                .openRegister_Page()
+                .registerWithRequired(email, password);
+        driver.quit();
+    }
+
+    @BeforeClass(description = "Before Class - Setup test data")
     public void readTestBaseData() {
-        FileActions.getInstance().deleteFolder("allure-report");
         home_TD = new SHAFT.TestData.JSON(System.getProperty("homeJson"));
         register_TD = new SHAFT.TestData.JSON(System.getProperty("registerUserJson"));
         login_TD = new SHAFT.TestData.JSON(System.getProperty("loginJson"));
@@ -29,12 +40,11 @@ public class BaseTest {
         contactUs_TD = new SHAFT.TestData.JSON(System.getProperty("contactUsJson"));
         productDetails_TD = new SHAFT.TestData.JSON(System.getProperty("productDetailsJson"));
         checkout_TD = new SHAFT.TestData.JSON(System.getProperty("checkoutJson"));
-
     }
 
     @BeforeMethod(description = "Before Method - Initialize browser")
     public void setUp() {
-        driver = new SHAFT.GUI.WebDriver();
+        driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME);
     }
 
     @AfterMethod(description = "After Method - Close browser")
@@ -44,9 +54,10 @@ public class BaseTest {
         driver.browser().captureSnapshot();
         driver.quit();
     }
+
     @AfterSuite(description = "After Suite - Close browser")
     public void generateAllureReportHTM() {
-        TerminalActions.getInstance().performTerminalCommand("allure generate --single-file allure-results -o allure-report");
-       // TerminalActions.getInstance().performTerminalCommand("allure serve allure-results");
+        // TerminalActions.getInstance().performTerminalCommand("allure generate --single-file allure-results -o allure-report");
+        // TerminalActions.getInstance().performTerminalCommand("allure serve allure-results");
     }
 }

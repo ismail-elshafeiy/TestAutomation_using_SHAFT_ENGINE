@@ -48,14 +48,12 @@ public class CheckoutProduct_test extends BaseTest {
     @TmsLink("Tc_002")
     @Issue("Bug_002")
     public void PD_001_UserCan_Add_ProductToCart() {
-        String email = register_TD.getTestData("Email");
-        String newPassword = register_TD.getTestData("NewPassword");
         String productName3 = home_TD.getTestData("ProductName3");
         String numberOfProduct_searchList = home_TD.getTestData("NumberOfProduct");
         String expectedResult_addToCartSuccess = productDetails_TD.getTestData("SuccessMessage_AddToCart");
         new HomePage(driver).navigateTo_HomePage()
                 .openLogin_Page()
-                .loginViaEmail(email, newPassword)
+                .loginViaEmail(email, password)
                 .searchOfProduct(productName3)
                 .openProductDetails_fromSearchList(numberOfProduct_searchList)
                 .addProduct_ToCart();

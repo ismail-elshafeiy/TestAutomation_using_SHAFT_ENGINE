@@ -98,15 +98,13 @@ public class ProductDetails_test extends BaseTest {
     @TmsLink("Tc_002")
     @Issue("Bug_002")
     public void userCan_Send_ProductToFriend() {
-        String email = register_TD.getTestData("Email");
-        String newPassword = register_TD.getTestData("NewPassword");
         String productName = home_TD.getTestData("ProductName");
         String friendEmail = productDetails_TD.getTestData("FriendEmail");
         String personalMessage = productDetails_TD.getTestData("PersonalMessage");
         String expectedResult_EmailFriendSuccess = productDetails_TD.getTestData("ExpectedResult_EmailFriendSuccess");
         new HomePage(driver).navigateTo_HomePage()
                 .openLogin_Page()
-                .loginViaEmail(email, newPassword)
+                .loginViaEmail(email, password)
                 .searchOfProduct(productName)
                 .openSearchResults()
                 .openProductDetails_Page();

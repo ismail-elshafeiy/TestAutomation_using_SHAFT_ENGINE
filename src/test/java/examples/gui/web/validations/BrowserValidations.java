@@ -13,22 +13,22 @@ public class BrowserValidations extends BaseTests {
 
 	@Test
 	public void ValidateUrl () {
-		driver.browser().navigateToURL("https://www.w3schools.com/");
-		(new Verifications(driver))
+		driver.get().browser().navigateToURL("https://www.w3schools.com/");
+		(new Verifications(driver.get()))
 				.verifyUrlContains("https://www.w3schools.com/")
 				.verifyTitleContains("W3Schools Online Web Tutorials");
-		Verifications.verifyUrlContains(driver, "https://www.w3schools.com/");
+		Verifications.verifyUrlContains(driver.get(), "https://www.w3schools.com/");
 	}
 
 	@Test
 	public void ValidateTitle () {
-		driver.browser().navigateToURL("https://www.w3schools.com/");
+		driver.get().browser().navigateToURL("https://www.w3schools.com/");
 		//make assertion
-		Validations.assertThat().browser(driver.getDriver()).attribute("title").isNotNull().perform();
-		driver.assertThat()
+	//	Validations.assertThat().browser(driver.get().getDriver.get()).attribute("title").isNotNull().perform();
+		driver.get().assertThat()
 				.browser().attribute("title").isNotNull().perform();
 		//make verification
-		driver.verifyThat()
+		driver.get().verifyThat()
 				.browser().attribute("title").isNotNull().perform();
 	}
 

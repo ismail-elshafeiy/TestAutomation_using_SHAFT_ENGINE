@@ -9,16 +9,15 @@
     <name>Web-NopCommerce_TestAutomation</name>
     <description>Selenium Automation Framework for Testing</description>
     <url>https://github.com/ismail-elshafeiy</url>
-
     <properties>
         <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases -->
-        <shaft_engine.version>8.1.20240102</shaft_engine.version>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <shaft_engine.version>8.1.20240324</shaft_engine.version>
+        <aspectjweaver.version>1.9.21</aspectjweaver.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <surefire-testng.version>3.1.2</surefire-testng.version>
-        <junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
+        <surefire-testng.version>3.2.5</surefire-testng.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <junit-jupiter-engine.version>5.10.1</junit-jupiter-engine.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
     <dependencies>
@@ -40,11 +39,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>21</source>
+                    <target>21</target>
                     <encoding>UTF-8</encoding>
-                    <maxmem>10240m</maxmem>
-                    <meminitial>1024m</meminitial>
+                    <meminitial>4096m</meminitial>
                 </configuration>
             </plugin>
             <plugin>

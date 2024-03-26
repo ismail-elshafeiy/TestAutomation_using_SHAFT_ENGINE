@@ -20,8 +20,6 @@ public class MyAccount_test extends BaseTest {
     @TmsLink("Tc_002")
     @Issue("Bug_002")
     public void MA_001_user_changeMyPassword() {
-        String email = register_TD.getTestData("Email");
-        String password = register_TD.getTestData("Password");
         String newPassword = register_TD.getTestData("NewPassword");
         String expectedResult_ChangeMyPassword = myAccount_TD.getTestData("ExpectedResult_ChangeMyPassword");
         new HomePage(driver).navigateTo_HomePage()
@@ -49,7 +47,6 @@ public class MyAccount_test extends BaseTest {
     @TmsLink("Tc_002")
     @Issue("Bug_002")
     public void MA_002_UserLogin_viaNewPassword() {
-        String email = register_TD.getTestData("Email");
         String newPassword = register_TD.getTestData("NewPassword");
         String expectedResult_LoginProcess = login_TD.getTestData("ExpectedResult_LoginProcess");
         new HomePage(driver).navigateTo_HomePage()

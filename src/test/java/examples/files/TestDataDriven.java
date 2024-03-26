@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertTrue;
+
 
 public class TestDataDriven extends BaseTests {
 	private By usernameField = By.id("username");
@@ -15,13 +15,13 @@ public class TestDataDriven extends BaseTests {
 
 	@Test (groups = "approach1")
 	public void login_readDataFromExcelFile () {
-		driver.browser().navigateToURL("https://the-internet.herokuapp.com/login");
-		driver.element().type(usernameField, excelReader.getCellData("Login Data2","email1","email"));
-		driver.element().type(passwordField, excelReader.getCellData("Login Data2","email1","password"));
-		driver.element().click(loginButton);
+		driver.get().browser().navigateToURL("https://the-internet.herokuapp.com/login");
+		driver.get().element().type(usernameField, excelReader.get().getCellData("Login Data2","email1","email"));
+		driver.get().element().type(passwordField, excelReader.get().getCellData("Login Data2","email1","password"));
+		driver.get().element().click(loginButton);
 	}
 	@BeforeClass
 	public void setTestData () {
-		excelReader = new SHAFT.TestData.EXCEL(System.getProperty("testDataFolderPath")+"LoginData.xlsx");
+		excelReader.set(new SHAFT.TestData.EXCEL(System.getProperty("testDataFolderPath")+"LoginData.xlsx"));
 	}
 }
