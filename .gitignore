@@ -8,6 +8,7 @@
 /allure-results/
 /allure-report/
 /execution-summary/
+/extent-reports/
 /target/
 /allure-resultsenvironment.xml
 /generate_allure_report.sh
