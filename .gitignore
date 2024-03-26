@@ -1,10 +1,14 @@
-/target/
-/allure-results/
 .project
 .classpath
 *.bat
 *.sh
 *.prefs
+#/.github/
 /.idea/
-/extent-reports/
+/allure-results/
 /allure-report/
+/execution-summary/
+/target/
+/allure-resultsenvironment.xml
+/generate_allure_report.sh
+/Web-NopCommerce_TestAutomation.iml
