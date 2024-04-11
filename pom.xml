@@ -11,7 +11,7 @@
     <url>https://github.com/ismail-elshafeiy</url>
     <properties>
         <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases 8.1.20240324 -->
-        <shaft_engine.version>8.1.20240324</shaft_engine.version>
+        <shaft_engine.version>8.2.20240411</shaft_engine.version>
         <aspectjweaver.version>1.9.21</aspectjweaver.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
