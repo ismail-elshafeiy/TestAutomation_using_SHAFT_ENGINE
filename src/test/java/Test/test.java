@@ -51,7 +51,17 @@ public class test {
         System.out.println("Search results --> " + getSearchResults);
         Assert.assertNotEquals(getSearchResults, "");
     }
+@Test(groups = "Chrome", description = "This test case verifies the search functionality on Google" , priority = 1 , enabled = true , alwaysRun = true)
+public void verifySearch() {
+        driver.get().browser().setWindowSize(600, 466);
+        new Google_Page(driver.get()).navigateTo_googlePage()
+        .searchByTextAndIndexList("Selenium WebDriver");
+        By searchResult_txt = By.xpath("//div[@id='result-stats']");
+        var getSearchResults = driver.get().getDriver().findElement(searchResult_txt).getText();
+        System.out.println("Search results --> " + getSearchResults);
+        Assert.assertNotEquals(getSearchResults, "");
 
+}
 
     @BeforeMethod
     public void setUp() {

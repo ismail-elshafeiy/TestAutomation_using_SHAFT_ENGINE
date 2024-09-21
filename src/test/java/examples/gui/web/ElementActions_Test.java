@@ -15,24 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ElementActions_Test {
-    public ThreadLocal<SHAFT.GUI.WebDriver> driver = new ThreadLocal<>();
+public class ElementActions_Test extends BaseTests{
 
     //public SHAFT.GUI.WebDriver driver;
     public ThreadLocal<SHAFT.TestData.EXCEL> excelReader = new ThreadLocal<>();
     public ThreadLocal<SHAFT.TestData.JSON> jsonReader = new ThreadLocal<>();
 
-
-    @BeforeMethod
-    public void setUp() {
-        driver.set(new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME));
-//		excelReader = new SHAFT.TestData.EXCEL(System.getProperty("testDataFolderPath")+"");
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.get().quit();
-    }
 
     @Test
     @Description("""
@@ -131,7 +119,5 @@ public class ElementActions_Test {
         driver.get().element().select(dropDown, "Option 1");
         driver.get().element().select(dropDown, "Option 2");
     }
-
-
 }
 

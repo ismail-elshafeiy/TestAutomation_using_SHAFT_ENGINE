@@ -34,4 +34,5 @@ public class ContactUs_test extends BaseTest {
                 .withCustomReportMessage("Assert that the guest contact Admin By Get success message text of contactUs process")
                 .perform();
     }
+
 }

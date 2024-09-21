@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
-public class GetTableRowsDataTests {
+public class GetTableRowsData_Test {
     SHAFT.GUI.WebDriver driver;
     // locator is the locator of the table element
     // <table id="example" class="display datatable">

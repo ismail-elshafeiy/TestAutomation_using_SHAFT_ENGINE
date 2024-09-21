@@ -56,7 +56,6 @@ public class RESTApiBase {
         JSONObject authentication = new JSONObject();
         authentication.put("username", username);
         authentication.put("password", password);
-
         Response createToken = restActions
                 .buildNewRequest(auth_serviceName, RestActions.RequestType.POST)
                 .setRequestBody(authentication)

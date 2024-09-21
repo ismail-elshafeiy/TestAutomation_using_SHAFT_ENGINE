@@ -1,13 +1,12 @@
 package examples.gui.web;
 
 import com.shaft.driver.SHAFT;
-import com.shaft.gui.browser.BrowserActions;
 import com.shaft.validation.Validations;
 import org.openqa.selenium.By;
 
 import org.testng.annotations.*;
 
-public class Test_NewValidationHelper {
+public class NewValidationHelper_Test {
     SHAFT.GUI.WebDriver driver;
     double elementIdentificationTimeout = SHAFT.Properties.timeouts.defaultElementIdentificationTimeout();
 

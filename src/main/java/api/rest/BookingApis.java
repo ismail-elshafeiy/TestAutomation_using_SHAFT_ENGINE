@@ -1,5 +1,6 @@
 package api.rest;
 
+import com.shaft.driver.SHAFT;
 import org.json.simple.JSONObject;
 import com.shaft.api.RestActions;
 import io.qameta.allure.Step;
@@ -9,6 +10,7 @@ import io.restassured.response.Response;
 public class BookingApis {
 
     private RestActions restActions;
+
 
     // Services Name
     // Services Names
