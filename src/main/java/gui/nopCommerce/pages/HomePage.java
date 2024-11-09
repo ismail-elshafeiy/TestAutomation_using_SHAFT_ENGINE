@@ -13,7 +13,7 @@ public class HomePage {
     }
 
     // Home URL  ...
-    private final String baseUrl = System.getProperty("homeUrl");
+    private final String baseUrl = System.getProperty("nopCommerceBaseUrl");
     // Elements Locators
     private final By register_linkTxt = By.cssSelector("a.ico-register");
     private final By login_linkTxt = By.linkText("Log in");

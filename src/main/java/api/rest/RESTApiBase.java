@@ -11,7 +11,7 @@ public class RESTApiBase {
     private RestActions restActions;
 
     // Base URL
-    public static final String BASE_URL = System.getProperty("baseUrl");
+    public static final String BASE_URL = System.getProperty("restfulBaseUrl");
     // Services Names
     private String auth_serviceName = System.getProperty("authService");
 
