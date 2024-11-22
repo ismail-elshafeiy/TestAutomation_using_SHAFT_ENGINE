@@ -1,6 +1,6 @@
 ### 🔧 Technologies
 
-* Java Development Kit [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-windows) as a Development
+* Java Development Kit [JDK-21](https://www.oracle.com/java/technologies/downloads/#jdk17-windows) as a Development
   Environment.
 * [Maven](https://maven.apache.org/) as a build tool, that automate the process of compiling computer source code into
   binary code.
@@ -11,7 +11,6 @@
   Automation.
 * [SHAFT_Engine Framework](https://github.com/ShaftHQ/SHAFT_ENGINE.git)
 * [Allure Report Framework](https://docs.qameta.io/allure/) for generating test execution report.
-* [Extent Report Framework](https://www.extentreports.com/docs/versions/4/java/) for generating test execution report.
 * [Data Driven Testing framework](https://www.guru99.com/data-driven-testing.html) to read from data files and store
   them in variables in test scripts.
 * [Docker](https://docs.docker.com/)

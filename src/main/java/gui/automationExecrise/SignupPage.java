@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class SignupPage {
     // Variables
     private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("restfulBaseUrl") + "/signup";
+    private String url = System.getProperty("automationExerciseBaseUrl") + "/signup";
 
     // Locators
     private final By accountInfo_h1 = By.xpath("//div[@class='login-form']/h2[@class='title text-center']/b");

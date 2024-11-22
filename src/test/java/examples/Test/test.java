@@ -1,4 +1,4 @@
-package Test;
+package examples.Test;
 
 import com.shaft.driver.SHAFT;
 import gui.examples.Google_Page;

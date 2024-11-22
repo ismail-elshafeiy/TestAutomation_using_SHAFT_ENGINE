@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class CartPage {
     // Variables
     private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("restfulBaseUrl") + "/view_cart";
+    private String url = System.getProperty("automationExerciseBaseUrl") + "/view_cart";
 
     // Locators
     private final By proceedToCheckout_button = By.cssSelector(".btn.btn-default.check_out");

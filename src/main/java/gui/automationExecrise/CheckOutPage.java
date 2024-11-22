@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 public class CheckOutPage {
     // Variables
     private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("restfulBaseUrl") + "/checkout";
+    private String url = System.getProperty("automationExerciseBaseUrl") + "/checkout";
 
     // Locators
     private final By addressVerificationFirstName_link = By.xpath("//ul[@class = 'address item box']//li[@class='address_firstname address_lastname']");

@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 public class PaymentPage {
     // Variables
     private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("restfulBaseUrl") + "/payment";
+    private String url = System.getProperty("automationExerciseBaseUrl") + "/payment";
 
     // Locators
     private final By nameOnCardTxtInput_input = By.xpath("//input[@data-qa='name-on-card']");

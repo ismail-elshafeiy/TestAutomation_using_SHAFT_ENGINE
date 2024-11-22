@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 public class ProductsPage {
     // Variables
     private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("restfulBaseUrl") + "/products";
+    private String url = System.getProperty("automationExerciseBaseUrl") + "/products";
 
     // Locators
     private final By productsPageTitle_div = By.xpath("//h2[@class='title text-center' and text()='All Products']");
