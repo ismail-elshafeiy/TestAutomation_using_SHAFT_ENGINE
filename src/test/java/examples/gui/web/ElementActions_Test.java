@@ -1,5 +1,6 @@
 package examples.gui.web;
 
+
 import com.shaft.driver.DriverFactory;
 import com.shaft.driver.SHAFT;
 import com.shaft.enums.internal.ClipboardAction;
@@ -9,12 +10,13 @@ import jdk.jfr.Description;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+//@Listeners(ChainTestListener.class)
 public class ElementActions_Test extends BaseTests{
 
     //public SHAFT.GUI.WebDriver driver;

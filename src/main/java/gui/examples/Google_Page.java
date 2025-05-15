@@ -123,7 +123,7 @@ public class Google_Page {
 
     public SearchResults_Page searchByTextAndIndexList(String searchKeyWord) {
         driver.element().type(search_textBx, searchKeyWord);
-        driver.element().keyPress(search_textBx, Keys.ENTER);
+        driver.element().type(search_textBx, Keys.ENTER);
         return new SearchResults_Page(driver);
     }
 
