@@ -6,10 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class RegisterWhileCheckoutPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
-
-    //Locators
     private final By checkoutBodyMessage_div = By.cssSelector("div.modal-content > div > h4");
     private final By registerLoginLink_div = By.xpath("//p[@class='text-center']/a[@href='/login']/u");
     private final By checkoutFullAddress_div = By.xpath("//ul[@class='address item box']//li[@class='address_city address_state_name address_postcode']");
@@ -19,12 +16,10 @@ public class RegisterWhileCheckoutPage {
     private final By commentSectionTextBox_div = By.xpath("//textarea[@class='form-control']");
     private final By placeOrderBtn_div = By.xpath("//a[@href='/payment']");
 
-    // Constructor
     public RegisterWhileCheckoutPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Click On Register/Login Button")
     public RegisterWhileCheckoutPage clickOnRegisterLoginBtn() {
         driver.element().click(registerLoginLink_div);
@@ -51,7 +46,6 @@ public class RegisterWhileCheckoutPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\
     @Step("Verify The Checkout Pop Up Is Displayed")
     public RegisterWhileCheckoutPage verifyCheckoutPopUpDisplayed(String expectedMessage) {
         driver.element().verifyThat(checkoutBodyMessage_div).text().contains(expectedMessage).perform();

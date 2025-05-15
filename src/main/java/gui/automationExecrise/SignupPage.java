@@ -5,11 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class SignupPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/signup";
 
-    // Locators
     private final By accountInfo_h1 = By.xpath("//div[@class='login-form']/h2[@class='title text-center']/b");
     private final By password_input = By.id("password");
     private final By days_select = By.id("days");
@@ -30,12 +28,9 @@ public class SignupPage {
         return By.xpath("//input[@value='" + gender + "']");
     }
 
-    // Constructor
     public SignupPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
-
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Navigate To Signup Page")
     public SignupPage navigate() {
         driver.browser().navigateToURL(url);
@@ -76,8 +71,6 @@ public class SignupPage {
         GoogleAlert.dismissAlert(driver, continueBtn_button);
         return this;
     }
-
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Account Info Page")
     public SignupPage validateOnAccountInfoPage(String expectedText) {
         driver.verifyThat().element(accountInfo_h1).text().equalsIgnoringCaseSensitivity(expectedText).perform();

@@ -5,11 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class SignupLoginPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/login";
 
-    // Locators
     private final By signup_div = By.xpath("//div[@class='signup-form']");
     private final By signup_h2 = By.xpath("//div[@class='signup-form']//h2");
     private final By signupUserName_input = By.xpath("//input[@data-qa='signup-name']");
@@ -22,12 +20,10 @@ public class SignupLoginPage {
     private final By loginBtn_button = By.xpath("//button[@data-qa='login-button']");
     private final By signupExistingEmail_text = By.xpath("//p[@style='color: red;']");
 
-    // Constructor
     public SignupLoginPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Navigate To Login Page")
     public void navigate() {
         driver.browser().navigateToURL(url);
@@ -51,7 +47,6 @@ public class SignupLoginPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Signup Visibility")
     public SignupLoginPage validateOnSignUpVisibility(String expectedResult) {
         driver.verifyThat().element(signup_div).exists().perform();

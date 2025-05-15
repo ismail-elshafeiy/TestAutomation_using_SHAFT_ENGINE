@@ -5,23 +5,21 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class HomePage {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl");
 
-    // Locators
     private final By featuredItems_div = By.cssSelector("div.features_items");
     private final By recommendedItems_div = By.cssSelector("div.recommended_items");
     private final By categoryTitle_h2= By.xpath("//h2[@class='title text-center']");
     private final By scrollUpArrow_button = By.xpath("//i[@class='fa fa-angle-up']");
     private final By slideHeading_h2= By.xpath("(//h2[contains(text(), 'Full-Fledged practice website for Automation Engineers')])[1]");
 
-    // Constructor
     public HomePage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
+
     @Step("Navigate to Home Page")
     public HomePage navigate() {
         driver.browser().navigateToURL(url);
@@ -40,7 +38,6 @@ public class HomePage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Visibility Of The Home Page")
     public HomePage validateOnVisibilityOfHomePage() {
         driver.verifyThat().element(featuredItems_div).exists().perform();

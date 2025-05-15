@@ -5,10 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ProductDetailsPage {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By productDetails_div = By.className("product-details");
     private final By productName_h2 = By.xpath("//div[@class='product-information']//h2");
     private final By productCategory_p = By.xpath("//div[@class='col-sm-7']//p[1]");
@@ -17,14 +16,10 @@ public class ProductDetailsPage {
     private final By productBrand_p = By.xpath("//div[@class='col-sm-7']//p[4]");
     private final By productPrice_span = By.xpath("//div[@class='col-sm-7']//span//span");
 
-    // Constructor
     public ProductDetailsPage(SHAFT.GUI.WebDriver driver){
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
-
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Verify Product Details Page Visibility")
     public ProductDetailsPage verifyProductDetailsPageVisibility(){
         driver.verifyThat().element(productDetails_div).isVisible().perform();

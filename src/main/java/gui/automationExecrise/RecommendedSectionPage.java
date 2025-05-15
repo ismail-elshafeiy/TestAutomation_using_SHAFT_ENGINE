@@ -5,22 +5,19 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class RecommendedSectionPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By productAddedToCartMessage_div = By.cssSelector("div.modal-content > div > h4");
     private final By recommendedItems_div = By.cssSelector("div.recommended_items");
     private By addToCart_link(String productName){
         return By.xpath("//div[@class='recommended_items']//child::p[text()='" + productName + "']//parent::div//a");
     }
 
-    // Constructor
     public RecommendedSectionPage(SHAFT.GUI.WebDriver driver){
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
+
     //Workaround not to throw moveTargetOutOfBound Exception
     @Step("Navigate Recommended Section Tab")
     public RecommendedSectionPage openRecommendedSection(){
@@ -34,7 +31,6 @@ public class RecommendedSectionPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Visibility Of Recommended Section")
     public RecommendedSectionPage verifyRecommendedSectionVisibility(){
         driver.verifyThat().element(recommendedItems_div).isVisible().perform();

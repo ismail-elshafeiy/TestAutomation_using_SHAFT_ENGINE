@@ -5,10 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ContactUsPage {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By contactUsForm_div = By.xpath("//div[@class='contact-form']");
     private final By contactName_input = By.name("name");
     private final By email_input = By.name("email");
@@ -18,12 +17,10 @@ public class ContactUsPage {
     private final By uploadBtn_button = By.xpath("//input[@type='file']");
     private final By successMsg_div= By.xpath("//div[@class='status alert alert-success']");
 
-    // Constructor
     public ContactUsPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Enter ContactUs Information")
     public ContactUsPage enterContactUsInformation(String contactNameTxt, String emailTxt , String subjectTxt, String messageTxt, String filePath) {
         driver.element().type(contactName_input, contactNameTxt);
@@ -41,7 +38,6 @@ public class ContactUsPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Contact Us Page")
     public ContactUsPage validateOnContactUsPage() {
         driver.verifyThat().element(contactUsForm_div).exists().perform();

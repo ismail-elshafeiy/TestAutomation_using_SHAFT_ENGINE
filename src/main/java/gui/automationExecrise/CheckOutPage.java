@@ -5,11 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class CheckOutPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/checkout";
 
-    // Locators
     private final By addressVerificationFirstName_link = By.xpath("//ul[@class = 'address item box']//li[@class='address_firstname address_lastname']");
     private final By addressVerificationAddress1_link = By.xpath("//ul[@class = 'address item box']//li[@class='address_address1 address_address2'][2]");
     private final By addressVerificationCity_link = By.xpath("//ul[@class='address item box']//li[@class='address_country_name']");
@@ -20,13 +18,10 @@ public class CheckOutPage {
     private final By placeOrderBtn_button = By.xpath("//div//a[@class='btn btn-default check_out']");
     private final By commentTextArea_input = By.className("form-control");
 
-    // Constructor
     public CheckOutPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
-
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
-    @Step("Navigate To Checkout Page")
+   @Step("Navigate To Checkout Page")
     public CheckOutPage navigate() {
         driver.browser().navigateToURL(url);
         return this;
@@ -40,7 +35,6 @@ public class CheckOutPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Verifying Address Details")
     public CheckOutPage verifyingAddressDetails(String firstName, String address, String city) {
         driver.verifyThat().element(addressVerificationFirstName_link).text().isEqualTo(firstName).perform();

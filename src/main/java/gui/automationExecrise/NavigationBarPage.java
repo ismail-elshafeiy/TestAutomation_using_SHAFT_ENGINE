@@ -5,10 +5,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class NavigationBarPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By signupLogin_link = By.cssSelector("div.shop-menu a[href='/login']");
     private final By delete_link = By.cssSelector("a[href='/delete_account']");
     private final By loggedInUser_link = By.xpath("//i[@class = 'fa fa-user']/parent::a");
@@ -18,12 +16,10 @@ public class NavigationBarPage {
     private final By contactUs_link = By.cssSelector("a[href='/contact_us']");
     private final By logout_link = By.cssSelector("div.shop-menu a[href='/logout']");
 
-    // Constructor
     public NavigationBarPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("click On Signup Login Link")
     public NavigationBarPage clickOnSignupLoginLink() {
         driver.element().click(signupLogin_link);
@@ -69,7 +65,6 @@ public class NavigationBarPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate The Logged In User")
     public NavigationBarPage validateTheLoggedInUser(String expectedUser) {
         driver.verifyThat().element(loggedInUser_link).textTrimmed().isEqualTo("Logged in as " + expectedUser).perform();

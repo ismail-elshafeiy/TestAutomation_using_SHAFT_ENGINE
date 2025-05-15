@@ -6,11 +6,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class PaymentPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/payment";
 
-    // Locators
     private final By nameOnCardTxtInput_input = By.xpath("//input[@data-qa='name-on-card']");
     private final By cardNumberTxtInput_input = By.xpath("//input[@data-qa='card-number']");
     private final By cvcTxtInput_input = By.xpath("//input[@data-qa='cvc']");
@@ -22,12 +20,10 @@ public class PaymentPage {
     private final By downloadInvoiceBtn_button = By.cssSelector(".btn.btn-default.check_out");
     private final By continueBtn_button = By.cssSelector(".btn.btn-primary");
 
-    // Constructor
     public PaymentPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step(" Click On Continue Button")
     public PaymentPage clickContinueButton() {
         driver.element().click(continueBtn_button);
@@ -99,8 +95,6 @@ public class PaymentPage {
         driver.element().click(downloadInvoiceBtn_button);
         return this;
     }
-
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step(" Validate On Payment Success Validation Message ")
     public PaymentPage validateOnPaymentSuccessValidationMessage(String message) {
         driver.verifyThat().element(successPaymentMessage_text).text().contains(message).perform();

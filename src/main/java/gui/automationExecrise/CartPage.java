@@ -5,11 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class CartPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/view_cart";
 
-    // Locators
     private final By proceedToCheckout_button = By.cssSelector(".btn.btn-default.check_out");
     private final By productName_h4 = By.xpath("//td[@class='cart_description']//h4");
     private final By viewCart_div = By.xpath("//div[contains(@class,'confirm')]//a[@href='/view_cart']");
@@ -38,13 +36,9 @@ public class CartPage {
         return By.xpath("//a[text()='" + itemName + "']//ancestor::td[@class='cart_description']//following-sibling::td[@class='cart_total']//p");
     }
 
-    // Constructor
-
     public CartPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
-
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Navigate To Cart Page")
     public CartPage navigate() {
         driver.browser().navigateToURL(url);
@@ -88,7 +82,6 @@ public class CartPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Verify Cart Page Is Loaded")
     public CartPage verifyCartPageIsLoaded() {
         driver.verifyThat().element(proceedToCheckout_button).isVisible().perform();

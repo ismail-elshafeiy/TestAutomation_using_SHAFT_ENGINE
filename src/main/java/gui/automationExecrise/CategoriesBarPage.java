@@ -5,10 +5,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class CategoriesBarPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
 
-    // Locators
     public By getCategoryLinkLocator_link(String categoryType) {
         return By.xpath("//a[@href='#" + categoryType + "']");
     }
@@ -17,12 +15,10 @@ public class CategoriesBarPage {
         return By.xpath("//div[@id='" + categoryType + "']//a[contains(text(),'" + subCategoryType + "')]");
     }
 
-    // Constructor
     public CategoriesBarPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("click On Category Link")
     public CategoriesBarPage clickOnCategoryLink(String categoryType) {
         driver.element().click(getCategoryLinkLocator_link(categoryType));
@@ -36,7 +32,4 @@ public class CategoriesBarPage {
         GoogleAlert.dismissAlert(driver,getSubCategoryLinkLocator_link(categoryType, subCategoryType));
         return this;
     }
-
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
-
 }

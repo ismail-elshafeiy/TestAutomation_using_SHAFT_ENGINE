@@ -6,10 +6,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ProductQuantityPage {
-    // Variables
+
     private final SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By viewProductBtn_button = By.xpath("(//div[@class='choose']//a)[2]");
     private final By productDetails_label = By.xpath("//span/Label");
     private final By hoverBtn_button = By.id("quantity");
@@ -17,12 +16,10 @@ public class ProductQuantityPage {
     private final By viewCartBtn_button = By.xpath("//p[@class='text-center']/a[@href='/view_cart']/u");
     private final By productQuantityBtn_button = By.xpath("//td[@class ='cart_quantity']/button[@class='disabled']");
 
-    // Constructor
     public ProductQuantityPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Click On View Product")
     public ProductQuantityPage clickOnViewProduct() {
         driver.element().click(viewProductBtn_button);
@@ -57,7 +54,6 @@ public class ProductQuantityPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Verify That Product Details Is Opened")
     public ProductQuantityPage verifyOnProductDetails() {
         driver.element().verifyThat(productDetails_label).exists().perform();

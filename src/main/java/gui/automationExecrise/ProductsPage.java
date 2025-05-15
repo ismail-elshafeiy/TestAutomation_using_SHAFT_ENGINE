@@ -6,11 +6,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ProductsPage {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private String url = System.getProperty("automationExerciseBaseUrl") + "/products";
-
-    // Locators
     private final By productsPageTitle_div = By.xpath("//h2[@class='title text-center' and text()='All Products']");
     private final By searchTextArea_input = By.xpath("//input[@id='search_product']");
     private final By searchedProducts_h2 = By.xpath("//h2[text()='Searched Products']");
@@ -39,12 +36,10 @@ public class ProductsPage {
         return By.xpath("(//p[text()='" + productName + "'])[1]//ancestor::div[@class='product-image-wrapper']//child::a[contains(@href,'/product')]");
     }
 
-    // Constructor
     public ProductsPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("Pick Product")
     public ProductsPage pickProduct(String productName) {
         driver.element().click(viewProduct_link(productName));
@@ -107,7 +102,6 @@ public class ProductsPage {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate On Visibility Of The Products Page Title")
     public ProductsPage verifyProductPageTitleVisibility() {
         driver.verifyThat().element(productsPageTitle_div).isVisible().perform();

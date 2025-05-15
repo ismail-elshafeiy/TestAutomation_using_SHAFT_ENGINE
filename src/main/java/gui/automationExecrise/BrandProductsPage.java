@@ -5,10 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class BrandProductsPage {
-    // Variables
+
     private final SHAFT.GUI.WebDriver driver;
 
-    // Locators
     private final By productsBtn_button = By.xpath("//a[@href='/products']");
     private final By brandsBody_div = By.xpath("//div[@class='brands_products']");
     private final By brandNameBtn_button = By.xpath("//a[@href='/brand_products/Polo']");
@@ -19,12 +18,11 @@ public class BrandProductsPage {
         return By.xpath("//div/h2[@class='title text-center']['" + brand + "']");
     }
 
-    // Constructor
+
     public BrandProductsPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    ///////////////////// Actions /////////////////////////////
     @Step("Click on View Product")
     public BrandProductsPage clickOnProducts() {
         driver.element().click(productsBtn_button);
@@ -43,7 +41,6 @@ public class BrandProductsPage {
         return this;
     }
 
-    ///////////////////// Validations /////////////////////////////
     @Step("Verify That Brands Are Visible")
     public BrandProductsPage verifyBrandsVisible(){
         driver.element().verifyThat(brandsBody_div).exists().perform();
