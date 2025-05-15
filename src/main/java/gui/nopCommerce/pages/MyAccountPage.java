@@ -52,7 +52,7 @@ public class MyAccountPage {
     public MyAccountPage enterConfirmPassword_TxtFd(String newPassword) {
         driver.element()
                 .type(confirmPassword_TxtBox, newPassword)
-                .keyPress(changePassword_Btn, Keys.ENTER);
+                .type(changePassword_Btn, Keys.ENTER);
         return this;
     }
 

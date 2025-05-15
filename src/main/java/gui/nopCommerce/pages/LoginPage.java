@@ -35,7 +35,7 @@ public class LoginPage {
 		driver.element()
 				.type(email_TxtBox, email)
 				.type(password_TxtBox, password)
-				.keyPress(login_Btn, Keys.ENTER);
+				.type(login_Btn, Keys.ENTER);
 		return new HomePage(driver);
 	}
 
