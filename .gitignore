@@ -3,12 +3,13 @@
 *.bat
 *.sh
 *.prefs
-#/.github/
+/.github/
 /.idea/
 /allure-results/
 /allure-report/
 /execution-summary/
 /extent-reports/
+/execution-summary/
 /target/
 /allure-resultsenvironment.xml
 /generate_allure_report.sh
@@ -17,3 +18,4 @@
 .DS_Store
 codeviz-diagram-2025-05-12T17-34-44.drawio
 .vscode/settings.json
+/out/
