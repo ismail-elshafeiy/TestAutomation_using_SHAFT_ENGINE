@@ -6,6 +6,8 @@ import com.shaft.gui.element.ElementActions;
 import io.qameta.allure.Step;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +50,11 @@ public class Google_Page {
     @Step("Navigate to Home Page")
     public Google_Page navigateTo_googlePage() {
         driver.browser().navigateToURL("https://www.google.com/");
+        By locator = By.xpath("//img[@alt='Google']");
+
+driver.browser().getCurrentURL();
+driver.browser().getPageSource().contains("text");
+driver.element().type(locator, "text" + Keys.ENTER);
         return this;
     }
 
