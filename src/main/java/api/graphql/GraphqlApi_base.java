@@ -41,7 +41,7 @@ public class GraphqlApi_base {
         requestBody.put("variables", variables);
 
         return apiObject.buildNewRequest(END_POINT, RequestType.POST).setRequestBody(requestBody)
-                .setContentType(ContentType.JSON).performRequest();
+                .setContentType(ContentType.JSON).performRequest().getResponse();
     }
 
     /**

@@ -87,7 +87,7 @@ driver.element().type(locator, "text" + Keys.ENTER);
     public static boolean isGoogleLogoDisplayed(String logoName) throws IOException {
 
 
-        return driver.element().isElementDisplayed(googleLogo_image);
+        return driver.element().get().isDisplayed(googleLogo_image);
     }
 //    @Step("Check logo is displayed?")
 //    public static boolean isGoogleLogoDisplayed(String logoName) throws IOException {

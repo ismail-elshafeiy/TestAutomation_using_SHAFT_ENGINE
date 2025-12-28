@@ -16,7 +16,7 @@ public class tests_restActions {
         String serviceURI = "https://jsonplaceholder.typicode.com/";
 
 //        Response posts = (new RestActions(serviceURI)).performRequest(RequestType.GET, 200, "posts");
-        Response posts = RestActions.buildNewRequest(serviceURI, "posts", RequestType.GET).performRequest();
+        Response posts = RestActions.buildNewRequest(serviceURI, "posts", RequestType.GET).performRequest().getResponse();
 
         List<Object> postsList = RestActions.getResponseJSONValueAsList(posts, "$");
         Objects.requireNonNull(postsList).forEach(post -> {
@@ -29,7 +29,7 @@ public class tests_restActions {
     @Test
     public void validateUserEmail() {
         RestActions apiObject = new RestActions("https://jsonplaceholder.typicode.com");
-        Response users = apiObject.buildNewRequest("/users", RequestType.GET).setTargetStatusCode(200).performRequest();
+        Response users = apiObject.buildNewRequest("/users", RequestType.GET).setTargetStatusCode(200).performRequest().getResponse();
         Validations.assertThat().object(RestActions.getResponseBody(users)).contains("Leanne Graham").perform();
 
         Objects.requireNonNull(RestActions.getResponseJSONValueAsList(users, "$")).forEach(user -> {
@@ -43,7 +43,7 @@ public class tests_restActions {
     @Test
     public void validateUserId() {
         RestActions apiObject = new RestActions("https://jsonplaceholder.typicode.com");
-        Response users = apiObject.buildNewRequest("/users", RequestType.GET).setTargetStatusCode(200).performRequest();
+        Response users = apiObject.buildNewRequest("/users", RequestType.GET).setTargetStatusCode(200).performRequest().getResponse();
 
         String uerId = RestActions.getResponseJSONValueFromList(users, "$", "id", "name", "Chelsey Dietrich");
         Validations.assertThat().object(uerId).isEqualTo("5").perform();

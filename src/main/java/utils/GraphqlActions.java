@@ -40,7 +40,7 @@ public final class GraphqlActions {
         requestBody.put("query", query);
 
         return apiObject.buildNewRequest(END_POINT, RestActions.RequestType.POST).setRequestBody(requestBody)
-                .setContentType(ContentType.JSON).performRequest();
+                .setContentType(ContentType.JSON).performRequest().getResponse();
     }
 
     /**
@@ -58,7 +58,7 @@ public final class GraphqlActions {
         requestBody.put("variables", variables);
 
         return apiObject.buildNewRequest(END_POINT, RestActions.RequestType.POST).setRequestBody(requestBody)
-                .setContentType(ContentType.JSON).performRequest();
+                .setContentType(ContentType.JSON).performRequest().getResponse();
     }
 
     /**
@@ -78,7 +78,7 @@ public final class GraphqlActions {
         requestBody.put("fragments", fragments);
 
         return apiObject.buildNewRequest(END_POINT, RestActions.RequestType.POST).setRequestBody(requestBody)
-                .setContentType(ContentType.JSON).performRequest();
+                .setContentType(ContentType.JSON).performRequest().getResponse();
     }
 
 

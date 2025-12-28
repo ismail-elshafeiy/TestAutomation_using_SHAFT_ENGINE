@@ -53,7 +53,6 @@ public class TerminalActionsTests {
     public void local_singleTerminalCommand() {
         TerminalActions terminalSession = new TerminalActions();
         String shellResponse;
-
         shellResponse = terminalSession.performTerminalCommand("ls");
         Validations.assertThat().object(shellResponse).contains("README.md").perform();
     }
@@ -62,7 +61,6 @@ public class TerminalActionsTests {
     public void local_chainedTerminalCommands() {
         TerminalActions terminalSession = new TerminalActions();
         String shellResponse;
-
         shellResponse = terminalSession
                 .performTerminalCommands(Arrays.asList("ls /home/incorta-mohab/git/qa/src/test/resources",
                         "ls /home/incorta-mohab/git/qa/src/test/resources/TestDataFiles"));

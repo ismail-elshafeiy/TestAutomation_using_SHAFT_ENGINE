@@ -3,6 +3,12 @@ package gui.automationExecrise;
 import com.shaft.driver.SHAFT;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.time.Duration;
+import java.util.Objects;
 
 public class HomePage {
 
@@ -40,6 +46,8 @@ public class HomePage {
 
     @Step("Validate On Visibility Of The Home Page")
     public HomePage validateOnVisibilityOfHomePage() {
+        //driver.get().element().waitUntil(d -> Objects.requireNonNull(d.getTitle()).contains("DuckDuckGo"));
+   driver.element().waitUntil(d -> ExpectedConditions.visibilityOfElementLocated(featuredItems_div));
         driver.verifyThat().element(featuredItems_div).exists().perform();
         driver.verifyThat().element(recommendedItems_div).exists().perform();
         return this;

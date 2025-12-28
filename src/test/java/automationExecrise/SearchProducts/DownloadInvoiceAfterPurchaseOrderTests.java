@@ -56,6 +56,7 @@ public class DownloadInvoiceAfterPurchaseOrderTests {
         new CheckOutPage(driver)
                 .verifyingAddressDetails(testData.getTestData("UserFirstName"), testData.getTestData("Gender"), testData.getTestData("UserLastName"), testData.getTestData("UserAddress1"), testData.getTestData("UserCountry"), testData.getTestData("UserCity"))
                 .enteringDescriptionInCommentArea(testData.getTestData("Comment.text"));
+      SHAFT.Properties.paths.set().downloads("src/test/resources/downloadFiles");
         new PaymentPage(driver)
                 .fillPaymentInformation(testData.getTestData("Card.name"), testData.getTestData("Card.number"), testData.getTestData("Card.cvc"), testData.getTestData("Card.expirymonth"), testData.getTestData("Card.expiryyear"))
                 .validateOnPaymentSuccessValidationMessage(testData.getTestData("Messages.SuccessMessages"))

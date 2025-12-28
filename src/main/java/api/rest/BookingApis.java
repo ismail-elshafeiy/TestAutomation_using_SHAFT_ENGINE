@@ -31,7 +31,7 @@ public class BookingApis {
 
     @Step("Get All Booking Ids")
     public Response getAllBookingIds() {
-        return restActions.buildNewRequest(booking_serviceName, RestActions.RequestType.GET).performRequest();
+        return restActions.buildNewRequest(booking_serviceName, RestActions.RequestType.GET).performRequest().getResponse();
     }
 
     @Step("Get and Filter the booking Ids by [{firstName}] and [{lastName}] ")
@@ -39,7 +39,7 @@ public class BookingApis {
         return restActions
                 .buildNewRequest(booking_serviceName, RestActions.RequestType.GET)
                 .setUrlArguments("firstname=" + firstName + "&lastname=" + lastName)
-                .performRequest();
+                .performRequest().getResponse();
 
     }
 
@@ -47,7 +47,7 @@ public class BookingApis {
     public Response getBooking(String bookingId) {
         return restActions
                 .buildNewRequest(booking_serviceName + bookingId, RestActions.RequestType.GET)
-                .performRequest();
+                .performRequest().getResponse();
     }
 
     @Step("Create Booking")
@@ -56,7 +56,7 @@ public class BookingApis {
         return restActions.buildNewRequest(booking_serviceName, RestActions.RequestType.POST)
                 .setRequestBody(createBookingBody(firstName, lastName, totalPrice, depositePaid, checkIn, checkOut, additionalNeeds))
                 .setContentType(ContentType.JSON)
-                .performRequest();
+                .performRequest().getResponse();
     }
 
     @Step("Delete A Booking By: Id: [{bookingId}]")
@@ -64,7 +64,7 @@ public class BookingApis {
         return restActions
                 .buildNewRequest(booking_serviceName + bookingId, RestActions.RequestType.DELETE)
                 .setTargetStatusCode(RESTApiBase.StatusCode.SUCCESS_DELETE.getCode())
-                .performRequest();
+                .performRequest().getResponse();
     }
 
     //////////////////////////////////////////////////////

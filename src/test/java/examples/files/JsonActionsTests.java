@@ -77,7 +77,7 @@ public class JsonActionsTests {
     public void checkAPI_ResponseSchema() {
         Response response = DriverFactory.getAPIDriver("http://api.zippopotam.us/")
                 .buildNewRequest("us/90210", RestActions.RequestType.GET)
-                .performRequest();
+                .performRequest().getResponse();
         Validations.assertThat()
                 .response(response)
                 .matchesSchema(SHAFT.Properties.paths.testData() + "schema.json")

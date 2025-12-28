@@ -60,7 +60,7 @@ public class RESTApiBase {
                 .buildNewRequest(auth_serviceName, RestActions.RequestType.POST)
                 .setRequestBody(authentication)
                 .setContentType(ContentType.JSON)
-                .performRequest();
+                .performRequest().getResponse();
         String token = RestActions.getResponseJSONValue(createToken, "token");
         restActions.addHeaderVariable("Cookie", "token=" + token);
     }
