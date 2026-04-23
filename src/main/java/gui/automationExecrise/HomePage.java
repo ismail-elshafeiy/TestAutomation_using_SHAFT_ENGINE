@@ -46,8 +46,6 @@ public class HomePage {
 
     @Step("Validate On Visibility Of The Home Page")
     public HomePage validateOnVisibilityOfHomePage() {
-        //driver.get().element().waitUntil(d -> Objects.requireNonNull(d.getTitle()).contains("DuckDuckGo"));
-   driver.element().waitUntil(d -> ExpectedConditions.visibilityOfElementLocated(featuredItems_div));
         driver.verifyThat().element(featuredItems_div).exists().perform();
         driver.verifyThat().element(recommendedItems_div).exists().perform();
         return this;

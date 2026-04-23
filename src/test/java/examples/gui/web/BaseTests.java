@@ -32,6 +32,7 @@ public class BaseTests {
                 .enableBiDi(false);
 //                .driverProxySettings(true)
 //                .jvmProxySettings(true);
+        SHAFT.Properties.timeouts.set().waitUntilTimeout(60);
     }
 
     @BeforeMethod

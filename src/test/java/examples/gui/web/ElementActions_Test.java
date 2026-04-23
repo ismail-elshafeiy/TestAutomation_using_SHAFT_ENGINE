@@ -5,8 +5,10 @@ import com.shaft.enums.internal.ClipboardAction;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,6 +115,7 @@ public class ElementActions_Test extends BaseTests{
         By dropDown = By.id("dropdown");
         driver.get().browser().navigateToURL("https://the-internet.herokuapp.com/dropdown");
         driver.get().element().select(dropDown, "Option 1");
+        driver.get().element().waitUntil(ExpectedConditions.visibilityOfElementLocated(dropDown));
         driver.get().element().select(dropDown, "Option 2");
     }
 }
