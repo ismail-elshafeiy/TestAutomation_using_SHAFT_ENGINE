@@ -10,7 +10,7 @@
     <url>https://github.com/ismail-elshafeiy</url>
     <properties>
         <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases 8.1.20240324 -->
-        <shaft_engine.version>10.2.20260422</shaft_engine.version>
+        <shaft_engine.version>10.2.20260424</shaft_engine.version>
         <jdk.version>25</jdk.version>
         <aspectjweaver.version>1.9.25.1</aspectjweaver.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
@@ -24,12 +24,23 @@
         <similarity.version>2.0.0</similarity.version>
         <common-text.version>1.14.0</common-text.version>
         <commons-csv.version>1.10.0</commons-csv.version>
+        <surefireArgLine></surefireArgLine>
     </properties>
     <dependencies>
         <dependency>
             <groupId>io.github.shafthq</groupId>
             <artifactId>SHAFT_ENGINE</artifactId>
             <version>${shaft_engine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-testng</artifactId>
+            <version>${surefire-testng.version}</version>
         </dependency>
         <!-- CSV-->
         <dependency>
@@ -135,25 +146,31 @@
                             </dependency>
                         </dependencies>
                         <configuration>
+                            <encoding>UTF-8</encoding>
+                            <useManifestOnlyJar>true</useManifestOnlyJar>
                             <systemPropertyVariables>
                                 <testng.dtd.http>true</testng.dtd.http>
+                                <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
                             </systemPropertyVariables>
+                            <testFailureIgnore>true</testFailureIgnore>
                             <failIfNoSpecifiedTests>false</failIfNoSpecifiedTests>
                             <failIfNoTests>false</failIfNoTests>
                             <trimStackTrace>false</trimStackTrace>
                             <useFile>false</useFile>
-                            <encoding>UTF-8</encoding>
                             <argLine>
-                                -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
+                                ${surefireArgLine}
+                                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
                             </argLine>
                             <properties>
                                 <property>
-                                    <name>usedefaultlisteners</name>
-                                    <value>false</value>
-                                </property>
-                                <property>
                                     <name>listener</name>
                                     <value>com.shaft.listeners.TestNGListener</value>
+                                </property>
+                                <property>
+                                    <name>reporter</name>
+                                    <value>
+                                        org.testng.reporters.XMLReporter:generateTestResultAttributes=true,generateGroupsAttribute=true
+                                    </value>
                                 </property>
                             </properties>
                         </configuration>
