@@ -93,7 +93,7 @@ public class HomePage {
 
     @Step("Get the text of Register After logout")
     public String getRegisterLink() {
-        return driver.element().getText(register_linkTxt);
+        return driver.element().get().text(register_linkTxt);
     }
 
     @Step("Search of product Name [{productName}]")

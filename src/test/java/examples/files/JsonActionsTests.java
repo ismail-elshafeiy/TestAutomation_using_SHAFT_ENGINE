@@ -8,9 +8,7 @@ import com.shaft.validation.Validations;
 import io.restassured.builder.ResponseBuilder;
 import io.restassured.response.Response;
 import org.json.JSONException;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONCompare;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.JSONCompareResult;
@@ -23,17 +21,17 @@ import java.nio.file.Paths;
 
 public class JsonActionsTests {
     @Test
-    public void f() throws IOException, ParseException, JSONException {
+    public void f() throws IOException, JSONException {
         String expectedResponse = new String(
                 Files.readAllBytes(Paths.get(SHAFT.Properties.paths.testData() + "JsonFileTest2.json")));
         String actualResponse = new String(
                 Files.readAllBytes(Paths.get(SHAFT.Properties.paths.testData() + "JsonFileTest.json")));
 
-        JSONObject expectedJsonObject = (JSONObject) (new JSONParser()).parse(expectedResponse);
-        JSONObject actualJsonObject = (JSONObject) (new JSONParser()).parse(actualResponse);
+        JSONObject expectedJsonObject = new JSONObject(expectedResponse);
+        JSONObject actualJsonObject = new JSONObject(actualResponse);
 
-        String expectedJSONString = expectedJsonObject.toJSONString();
-        String actualJSONString = actualJsonObject.toJSONString();
+        String expectedJSONString = expectedJsonObject.toString();
+        String actualJSONString = actualJsonObject.toString();
 
         JSONCompareResult result = JSONCompare.compareJSON(expectedJSONString, actualJSONString, JSONCompareMode.LENIENT);
         boolean finalResult = result.passed();
@@ -41,21 +39,22 @@ public class JsonActionsTests {
     }
 
     @Test
-    public void f2() throws IOException, ParseException, JSONException {
+    public void f2() throws IOException, JSONException {
         String expectedResponse = new String(Files.readAllBytes(Paths.get(SHAFT.Properties.paths.testData() + "JsonFileTest2.json")));
         String actualResponse = new String(Files.readAllBytes(Paths.get(SHAFT.Properties.paths.testData() + "JsonFileTest.json")));
 
-        JSONObject expectedJsonObject = (JSONObject) (new JSONParser()).parse(expectedResponse);
-        JSONObject actualJsonObject = (JSONObject) (new JSONParser()).parse(actualResponse);
+        JSONObject expectedJsonObject = new JSONObject(expectedResponse);
+        JSONObject actualJsonObject = new JSONObject(actualResponse);
 
-        String expectedJSONString = expectedJsonObject.toJSONString();
-        String actualJSONString = actualJsonObject.toJSONString();
+        String expectedJSONString = expectedJsonObject.toString();
+        String actualJSONString = actualJsonObject.toString();
 
         JSONCompareResult result = JSONCompare.compareJSON(expectedJSONString, actualJSONString,
                 JSONCompareMode.LENIENT);
         boolean finalResult = result.passed();
         Assert.assertTrue(finalResult);
     }
+
     @Test
     public void specialCharacters() {
         String referenceJsonFilePath = SHAFT.Properties.paths.testData() + "specialCharacters.json";
@@ -73,6 +72,7 @@ public class JsonActionsTests {
                 .withCustomReportMessage("trying out the log message")
                 .perform();
     }
+
     @Test
     public void checkAPI_ResponseSchema() {
         Response response = DriverFactory.getAPIDriver("http://api.zippopotam.us/")

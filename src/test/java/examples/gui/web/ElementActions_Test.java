@@ -46,7 +46,7 @@ public class ElementActions_Test extends BaseTests{
     public void DoubleClick() {
         By box = By.id("message");
         driver.get().browser().navigateToURL("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
-        driver.get().element().getCSSProperty(box, "background-color");
+        driver.get().element().get().cssValue(box, "background-color");
         driver.get().verifyThat().element(box)
                 .cssProperty("background-color").isEqualTo("rgba(0, 0, 255, 1)");
         driver.get().element().doubleClick(box);
@@ -102,12 +102,11 @@ public class ElementActions_Test extends BaseTests{
         //append text to the end
         driver.get().element().typeAppend(textField, "this is added text");
         // copy the whole paragraph
-        driver.get().element().clipboardActions(textField, ClipboardAction.SELECT_ALL);
-        driver.get().element().clipboardActions(textField, ClipboardAction.COPY);
+        driver.get().element().clipboard().copyAll(textField);
         //replace original text using type
         driver.get().element().type(textField, "new text that overrides old content , ");
         //paste previously copied paragraph
-        driver.get().element().clipboardActions(textField, ClipboardAction.PASTE);
+        driver.get().element().clipboard().paste(textField);
     }
 
     @Test

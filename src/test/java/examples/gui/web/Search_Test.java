@@ -17,7 +17,7 @@ public class Search_Test extends BaseTests {
         new Google_Page(driver.get()).navigateTo_googlePage()
                 .searchByTextAndIndexList("Selenium WebDriver.get(");
         By searchResult_txt = By.xpath("//div[@id='result-stats']");
-        var getSearchResults = driver.get().element().getText(searchResult_txt);
+        var getSearchResults = driver.get().element().get().text(searchResult_txt);
         System.out.println("Search results --> " + getSearchResults);
         Assert.assertNotEquals(getSearchResults, "");
     }

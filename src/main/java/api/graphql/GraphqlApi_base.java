@@ -6,11 +6,10 @@ import com.shaft.driver.DriverFactory;
 import com.shaft.validation.Validations;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class GraphqlApi_base {
 
-    // ****variables
     private static final String BASE_URL = System.getProperty("graphql_baseUrl");
     private static final String END_POINT = System.getProperty("graphql_endPoint");
     public static final String SUCCESS_STATUS_CODE = "200";
@@ -18,12 +17,9 @@ public class GraphqlApi_base {
     public static final boolean SUCCESS_BOOLEAN = true;
     static RestActions apiObject = DriverFactory.getAPIDriver(BASE_URL);
 
-    // ****constructor
     public GraphqlApi_base(RestActions apiObject) {
         this.apiObject = apiObject;
     }
-
-    // ****methods
 
     /**
      * Perform Graphql Request using the "Query or Mutation" and the Variables
@@ -33,12 +29,14 @@ public class GraphqlApi_base {
      *
      * @return theResponse
      */
-    @SuppressWarnings( "unchecked" )
     public static Response graphqlRequestBuilder(String query, String variables) {
-
         JSONObject requestBody = new JSONObject();
-        requestBody.put("query", query);
-        requestBody.put("variables", variables);
+        try {
+            requestBody.put("query", query);
+            requestBody.put("variables", variables);
+        } catch (org.json.JSONException e) {
+            throw new RuntimeException("Failed to build GraphQL request body", e);
+        }
 
         return apiObject.buildNewRequest(END_POINT, RequestType.POST).setRequestBody(requestBody)
                 .setContentType(ContentType.JSON).performRequest().getResponse();

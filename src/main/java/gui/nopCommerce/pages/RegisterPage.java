@@ -7,15 +7,12 @@ import org.openqa.selenium.By;
 import utils.FakerData;
 
 public class RegisterPage {
-    // driver
     private SHAFT.GUI.WebDriver driver;
 
-    // Constructor
     public RegisterPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
-    // Elements Locators
     private By register_Screen = By.cssSelector("div.form-fields");
     private By maleGender_RdBtn = By.xpath("//div[@id='gender']/span[1]");
     private By femaleGender_RdBtn = By.xpath("//div[@id='gender']/span[2]");
@@ -41,10 +38,6 @@ public class RegisterPage {
     public static By register_SuccessMessage() {
         return By.cssSelector("div.result");
     }
-
-    /////////////////////////////////////////////////////////////////
-    //////////////////  Business Actions ////////////////////////////
-    /////////////////////////////////////////////////////////////////
 
     @Step("Choose Gender: [ {gender} ]")
     public RegisterPage chooseGender_RdBtn(String gender) {
@@ -128,27 +121,27 @@ public class RegisterPage {
 
     @Step("Get the text of Register After logout")
     public String getRegisterLink() {
-        return driver.element().getText(register_Link);
+        return driver.element().get().text(register_Link);
     }
 
     @Step("Get the Error Message when enter wrong Email")
     public String getErrorFirstNameRequired() {
-        return driver.element().getText(error_firstNameRequired);
+        return driver.element().get().text(error_firstNameRequired);
     }
 
     @Step("Get the Error Email when enter wrong Email")
     public String getErrorMessageEmail() {
-        return driver.element().getText(error_wrongEmail);
+        return driver.element().get().text(error_wrongEmail);
     }
 
     @Step("Get the Error Password when enter wrong Password")
     public String getErrorPassword() {
-        return driver.element().getText(error_passwordFormat);
+        return driver.element().get().text(error_passwordFormat);
     }
 
     @Step("Get the Error of Password when enter passwordDonotMatch")
     public String getErrorPasswordDontMatch() {
-        return driver.element().getText(error_passwordDoNotMatch);
+        return driver.element().get().text(error_passwordDoNotMatch);
     }
 
     @Step("Register with required data")

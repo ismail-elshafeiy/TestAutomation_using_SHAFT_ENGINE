@@ -5,15 +5,13 @@ import com.shaft.api.RestActions;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class RESTApiBase {
-    private RestActions restActions;
+    private final RestActions restActions;
 
-    // Base URL
     public static final String BASE_URL = System.getProperty("restfulBaseUrl");
-    // Services Names
-    private String auth_serviceName = System.getProperty("authService");
+    private final String auth_serviceName = System.getProperty("authService");
 
     public enum StatusCode {
         SUCCESS(200), SUCCESS_DELETE(201), NotFound(404), BadRequest(400), Unauthorized(401);
@@ -23,7 +21,7 @@ public class RESTApiBase {
             this.code = code;
         }
 
-        protected int getCode() {
+        int getCode() {
             return code;
         }
     }
@@ -36,35 +34,28 @@ public class RESTApiBase {
             this.status = status;
         }
 
-        protected String getStatus() {
+        private String getStatus() {
             return status;
         }
     }
 
-
-    // Constructor
     public RESTApiBase(RestActions restActions) {
         this.restActions = restActions;
     }
 
-    //////////////////////////////////////////////////////
-    ////////////////////// Actions //////////////////////
-
-    @SuppressWarnings("unchecked")
     @Step("Login with Username: {username} and Password: {password}")
     public void login(String username, String password) {
-        JSONObject authentication = new JSONObject();
-        authentication.put("username", username);
-        authentication.put("password", password);
-        Response createToken = restActions
-                .buildNewRequest(auth_serviceName, RestActions.RequestType.POST)
-                .setRequestBody(authentication)
-                .setContentType(ContentType.JSON)
-                .performRequest().getResponse();
-        String token = RestActions.getResponseJSONValue(createToken, "token");
-        restActions.addHeaderVariable("Cookie", "token=" + token);
+        try {
+            JSONObject authentication = new JSONObject();
+            authentication.put("username", username);
+            authentication.put("password", password);
+            Response createToken = restActions.buildNewRequest(auth_serviceName, RestActions.RequestType.POST).setRequestBody(authentication).setContentType(ContentType.JSON).performRequest().getResponse();
+            String token = RestActions.getResponseJSONValue(createToken, "token");
+            restActions.addHeaderVariable("Cookie", "token=" + token);
+        } catch (org.json.JSONException e) {
+            throw new RuntimeException("Failed to build authentication request body", e);
+        }
     }
-
 }
 
 

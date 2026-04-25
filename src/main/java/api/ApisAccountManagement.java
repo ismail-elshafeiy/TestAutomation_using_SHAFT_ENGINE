@@ -5,45 +5,43 @@ import com.shaft.driver.SHAFT;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ApisAccountManagement {
-    // Variables
+
     private SHAFT.API api;
 
-    // Constructor
     public ApisAccountManagement(SHAFT.API api) {
         this.api = api;
     }
 
-    // Services
     private static final String createAccount_serviceName = "/createAccount";
     private static final String loginToAccount_serviceName= "/verifyLogin";
     private static final String deleteAccount_serviceName = "/deleteAccount";
     private static final String getUserDetailByEmail_serviceName = "/getUserDetailByEmail";
 
-    //////////////////// Actions \\\\\\\\\\\\\\\\\\\\
     @Step("API Create/Register User Account")
     public ApisAccountManagement createRegisterUserAccount(String username, String email, String pass, String firstName, String lastName, String zipCode, String state, String city) {
-        List<List<Object>> formData = Arrays.asList(
-                Arrays.asList("name", username),
-                Arrays.asList("email", email),
-                Arrays.asList("password", pass),
-                Arrays.asList("title", "Mr."),
-                Arrays.asList("birth_date", "04"),
-                Arrays.asList("birth_month", "sep"),
-                Arrays.asList("birth_year", "1994"),
-                Arrays.asList("firstname", firstName),
-                Arrays.asList("lastname", lastName),
-                Arrays.asList("company", "company"),
-                Arrays.asList("address1", "address1"),
-                Arrays.asList("address2", "address2"),
-                Arrays.asList("country", "India"),
-                Arrays.asList("zipcode", zipCode),
-                Arrays.asList("state", state),
-                Arrays.asList("city", city),
-                Arrays.asList("mobile_number", "01111111"));
+        Map<String, Object> formData = new LinkedHashMap<>();
+        formData.put("name", username);
+        formData.put("email", email);
+        formData.put("password", pass);
+        formData.put("title", "Mr.");
+        formData.put("birth_date", "04");
+        formData.put("birth_month", "sep");
+        formData.put("birth_year", "1994");
+        formData.put("firstname", firstName);
+        formData.put("lastname", lastName);
+        formData.put("company", "company");
+        formData.put("address1", "address1");
+        formData.put("address2", "address2");
+        formData.put("country", "India");
+        formData.put("zipcode", zipCode);
+        formData.put("state", state);
+        formData.put("city", city);
+        formData.put("mobile_number", "01111111");
+
         api.post(createAccount_serviceName)
                 .setParameters(formData, RestActions.ParametersType.FORM)
                 .setContentType(ContentType.URLENC)
@@ -60,9 +58,10 @@ public class ApisAccountManagement {
 
     @Step("API Log Into User Account")
     public ApisAccountManagement logIntoUserAccount(String email, String pass){
-        List<List<Object>> formData = Arrays.asList(
-                Arrays.asList("email", email),
-                Arrays.asList("password", pass));
+        Map<String, Object> formData = new LinkedHashMap<>();
+        formData.put("email", email);
+        formData.put("password", pass);
+
         api.post(loginToAccount_serviceName)
                 .setParameters(formData, RestActions.ParametersType.FORM)
                 .setContentType(ContentType.URLENC)
@@ -73,9 +72,10 @@ public class ApisAccountManagement {
 
     @Step("API Delete User Account")
     public ApisAccountManagement deleteUserAccount(String email, String pass) {
-        List<List<Object>> formData = Arrays.asList(
-                Arrays.asList("email", email),
-                Arrays.asList("password", pass));
+        Map<String, Object> formData = new LinkedHashMap<>();
+        formData.put("email", email);
+        formData.put("password", pass);
+
         api.delete(deleteAccount_serviceName)
                 .setParameters(formData, RestActions.ParametersType.FORM)
                 .setContentType(ContentType.URLENC)
@@ -86,8 +86,9 @@ public class ApisAccountManagement {
 
     @Step("API Get User Detail By Email")
     public ApisAccountManagement getUserDetailByEmail(String email) {
-        List<List<Object>> queryParam = Arrays.asList(
-                Arrays.asList("email", email));
+        Map<String, Object> queryParam = new LinkedHashMap<>();
+        queryParam.put("email", email);
+
         api.get(getUserDetailByEmail_serviceName)
                 .setParameters(queryParam, RestActions.ParametersType.QUERY)
                 .setContentType(ContentType.URLENC)
@@ -96,7 +97,6 @@ public class ApisAccountManagement {
         return this;
     }
 
-    //////////////////// Validations \\\\\\\\\\\\\\\\\\\\
     @Step("Validate User Created/Registered")
     public ApisAccountManagement validateUserCreatedRegistered() {
         api.verifyThatResponse().extractedJsonValue("message").isEqualTo("User created!").perform();

@@ -42,7 +42,7 @@ public class SearchResults_Page {
      */
 
     public static String getTextSearchResults(String index) {
-        return driver.element().getText(getSearchResultsNumber(index));
+        return driver.element().get().text(getSearchResultsNumber(index));
     }
 
     /**

@@ -42,7 +42,7 @@ public class AddProductInCartTests {
                 .validateOnTotalPrice(testData.getTestData("SecondProduct.productDescription"), testData.getTestData("SecondProduct.total"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
+
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("AddProductInCartTestsTestData.json");

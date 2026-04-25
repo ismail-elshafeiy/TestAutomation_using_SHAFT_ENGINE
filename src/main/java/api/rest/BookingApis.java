@@ -1,7 +1,7 @@
 package api.rest;
 
 import com.shaft.driver.SHAFT;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import com.shaft.api.RestActions;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
@@ -11,9 +11,6 @@ public class BookingApis {
 
     private RestActions restActions;
 
-
-    // Services Name
-    // Services Names
     private String booking_serviceName = System.getProperty("booking_serviceName");
 //    private String booking_serviceName = "booking/";
 
@@ -23,10 +20,6 @@ public class BookingApis {
         this.restActions = restActions;
     }
 
-
-    //////////////////////////////////////////////////////
-    /////////////      Business Actions      /////////////
-    //////////////////////////////////////////////////////
 
 
     @Step("Get All Booking Ids")
@@ -67,10 +60,6 @@ public class BookingApis {
                 .performRequest().getResponse();
     }
 
-    //////////////////////////////////////////////////////
-    /////////////      JSON Object     /////////////
-    //////////////////////////////////////////////////////
-
     @SuppressWarnings("unchecked")
     private JSONObject createBookingBody(String firstName,
                                          String lastName,
@@ -79,19 +68,20 @@ public class BookingApis {
                                          String checkIn,
                                          String checkOut,
                                          String additionalNeeds) {
-        JSONObject createBookingBody = new JSONObject();
-        createBookingBody.put("firstname", firstName);
-        createBookingBody.put("lastname", lastName);
-        createBookingBody.put("totalprice", totalPrice);
-        createBookingBody.put("depositpaid", depositePaid);
-        JSONObject bookingDates = new JSONObject();
-        bookingDates.put("checkin", checkIn);
-        bookingDates.put("checkout", checkOut);
-        createBookingBody.put("bookingdates", bookingDates);
-        createBookingBody.put("additionalneeds", additionalNeeds);
-
-        return createBookingBody;
-
-
+        try {
+            JSONObject createBookingBody = new JSONObject();
+            createBookingBody.put("firstname", firstName);
+            createBookingBody.put("lastname", lastName);
+            createBookingBody.put("totalprice", totalPrice);
+            createBookingBody.put("depositpaid", depositePaid);
+            JSONObject bookingDates = new JSONObject();
+            bookingDates.put("checkin", checkIn);
+            bookingDates.put("checkout", checkOut);
+            createBookingBody.put("bookingdates", bookingDates);
+            createBookingBody.put("additionalneeds", additionalNeeds);
+            return createBookingBody;
+        } catch (org.json.JSONException e) {
+            throw new RuntimeException("Failed to build booking request body", e);
+        }
     }
 }

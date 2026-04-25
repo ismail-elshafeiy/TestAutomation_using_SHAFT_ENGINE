@@ -13,22 +13,15 @@ public class ReviewPage {
         this.driver = driver;
     }
 
-
     private By reviewTitle_txtBx = By.xpath("//input[@id='AddProductReview_Title']");
     private By reviewTxt_txtBx = By.xpath("//textarea[@id='AddProductReview_ReviewText']");
     private By rating_RadioBtn = By.id("addproductrating_4");
-
     private By stars(String rating) {
         return By.xpath("//input[contains(@value,'" + rating + "')][@type='radio']");
     }
-
     private By addReview_Btn = By.name("add-review");
     private By successProcess = By.xpath("//div[@class='result']");
 
-
-    /////////////////////////////////////////////////////////////////
-    //////////////////////////// Actions ////////////////////////////
-    /////////////////////////////////////////////////////////////////
 
     @Step("Enter the Review Title: --> [{reviewTitle}]")
     public ReviewPage enterReviewTitle(String reviewTitle) {
@@ -56,7 +49,7 @@ public class ReviewPage {
 
     @Step("get the Result")
     public String getText_successMessage() {
-        return driver.element().getText(successProcess);
+        return driver.element().get().text(successProcess);
     }
 
 }

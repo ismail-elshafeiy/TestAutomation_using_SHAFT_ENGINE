@@ -43,7 +43,6 @@ public class LoginWithCorrectEmailAndPasswordTests {
                 .validateUserNotFound(testData.getTestData("UserMail.ApiTimeStamp") + timeStamp + "@gizasystems.com");
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("LoginWithCorrectEmailAndPasswordTestsTestData.json");
