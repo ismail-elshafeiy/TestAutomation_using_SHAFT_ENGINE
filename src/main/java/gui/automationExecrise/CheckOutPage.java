@@ -5,8 +5,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class CheckOutPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/checkout";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/checkout";
 
     private final By addressVerificationFirstName_link = By.xpath("//ul[@class = 'address item box']//li[@class='address_firstname address_lastname']");
     private final By addressVerificationAddress1_link = By.xpath("//ul[@class = 'address item box']//li[@class='address_address1 address_address2'][2]");
@@ -21,7 +21,8 @@ public class CheckOutPage {
     public CheckOutPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
-   @Step("Navigate To Checkout Page")
+
+    @Step("Navigate To Checkout Page")
     public CheckOutPage navigate() {
         driver.browser().navigateToURL(url);
         return this;

@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class RegisterWhileCheckoutPage {
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
     private final By checkoutBodyMessage_div = By.cssSelector("div.modal-content > div > h4");
     private final By registerLoginLink_div = By.xpath("//p[@class='text-center']/a[@href='/login']/u");
     private final By checkoutFullAddress_div = By.xpath("//ul[@class='address item box']//li[@class='address_city address_state_name address_postcode']");

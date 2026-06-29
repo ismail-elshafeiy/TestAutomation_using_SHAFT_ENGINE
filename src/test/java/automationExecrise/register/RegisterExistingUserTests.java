@@ -17,13 +17,13 @@ import org.testng.annotations.Test;
 @Feature("User Management")
 @Story("Register")
 public class RegisterExistingUserTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.API api;
     private SHAFT.TestData.JSON testData;
     private String timeStamp = String.valueOf(System.currentTimeMillis());
 
-    // Test Cases
+
     @TmsLink("55512339")
     @Test(description = "Register User with existing Email - GUI")
     @Description("Given that I register with new user, When I enter Existing Email , Then I should not be registered and Error message appeared ")
@@ -40,7 +40,7 @@ public class RegisterExistingUserTests {
                 .validateOnErrorMessageVisibilityOfExistingEmail();
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
+
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("RegisterExistingUserTestsTestData.json");

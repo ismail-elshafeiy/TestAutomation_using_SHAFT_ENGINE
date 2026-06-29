@@ -14,11 +14,10 @@ import org.testng.annotations.Test;
 @Feature("Brand Module")
 @Story("Brand Products")
 public class BrandProductsTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @TmsLink("55512469")
     @Test(description = "Verify that Brand Products are displayed")
     @Description("Given I open Automation Exercise home, When I click on the 'Products' button, Then I verify that Brands are visible on the left side bar, When I click on any brand name, Then I verify that the user is navigated to the brand page and brand products are displayed, When I click on any other brand link on the left side bar, Then I verify that the user is navigated to that brand page and can see the products")
@@ -34,7 +33,6 @@ public class BrandProductsTests {
                 .verifyProductsOfSecondBrandVisible();
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("BrandProductsTestsTestData.json");

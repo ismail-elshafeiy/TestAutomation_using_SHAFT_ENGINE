@@ -18,7 +18,7 @@ public class ContactUsTests {
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
+
     @TmsLink("55512348")
     @Test(description = "Verify the functionality of the Contact Us form")
     @Description("Given that I click on contact Us Link, When I enter valid data, And press Submit , Then The message submitted")
@@ -32,7 +32,6 @@ public class ContactUsTests {
                 .validateOnContactInfoSubmitted(testData.getTestData("Messages.SubmittedMsg"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeMethod
     public void beforeMethod() {
         driver = new SHAFT.GUI.WebDriver();

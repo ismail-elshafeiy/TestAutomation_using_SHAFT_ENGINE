@@ -14,13 +14,13 @@ import org.testng.annotations.Test;
 @Feature("Order Placement")
 @Story("Place Order After Login")
 public class PlaceOrderLoginBeforeCheckoutTests {
-    // Variables
+
     private SHAFT.API api;
     private SHAFT.TestData.JSON testData;
     private String timeStamp;
     private SHAFT.GUI.WebDriver driver;
 
-    // Test Cases
+
     @TmsLink("55512442")
     @Test(description = "Verify the order placement process with login before checkout")
     @Description("Given I open Automation Exercise home, When I click 'Signup / Login' and fill in my email and password to log in, Then I verify 'Logged in as username' at the top, When I add products to the cart and click 'Cart' button, Then I verify that the cart page is displayed, And I click 'Proceed To Checkout', Then I verify Address Details and Review Your Order, When I enter a description in the comment text area and click 'Place Order', And enter payment details: Name on Card, Card Number, CVC, Expiration date, Then I click 'Pay and Confirm Order' and verify the success message 'Your order has been placed successfully!', When I click 'Delete Account', Then I verify 'ACCOUNT DELETED!' and click 'Continue'")
@@ -109,7 +109,7 @@ public class PlaceOrderLoginBeforeCheckoutTests {
                 .validateUserNotFound(testData.getTestData("UserMail.GuiApi") + timeStamp + "@gizasystems.com");
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
+
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("PlaceOrderLoginBeforeCheckoutTestsTestData.json");

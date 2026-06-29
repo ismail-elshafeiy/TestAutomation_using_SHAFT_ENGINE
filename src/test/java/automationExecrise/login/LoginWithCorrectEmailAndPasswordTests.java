@@ -16,13 +16,12 @@ import org.testng.annotations.Test;
 @Feature("User Management")
 @Story("Login")
 public class LoginWithCorrectEmailAndPasswordTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.API api;
     private SHAFT.TestData.JSON testData;
     private String timeStamp;
 
-    // Test Cases
     @TmsLink("55512292")
     @Test(description = "Login With Correct Email and Password Test - Register and Delete user with APIs ")
     @Description("Given that I am a registered user, When I enter correct email, And Correct Password , And I Clicked on Login button And I clicked on delete user, Then I should be Logged in successfully to the system, And user be deleted from the system")

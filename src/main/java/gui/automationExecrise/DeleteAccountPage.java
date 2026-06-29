@@ -6,17 +6,17 @@ import org.openqa.selenium.By;
 
 public class DeleteAccountPage {
 
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
 
     private final By accountDeleted_h2 = By.cssSelector("h2[data-qa='account-deleted'] > b");
-    private final By continueBtn_button=By.cssSelector("a[data-qa='continue-button']");
+    private final By continueBtn_button = By.cssSelector("a[data-qa='continue-button']");
 
     public DeleteAccountPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
     @Step("Click On Continue Button")
-    public DeleteAccountPage clickOnContinueBtn(){
+    public DeleteAccountPage clickOnContinueBtn() {
         driver.element().click(continueBtn_button);
         return this;
     }

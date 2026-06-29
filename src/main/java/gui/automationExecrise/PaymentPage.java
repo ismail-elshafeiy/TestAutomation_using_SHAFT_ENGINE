@@ -6,8 +6,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class PaymentPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/payment";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/payment";
 
     private final By nameOnCardTxtInput_input = By.xpath("//input[@data-qa='name-on-card']");
     private final By cardNumberTxtInput_input = By.xpath("//input[@data-qa='card-number']");
@@ -95,6 +95,7 @@ public class PaymentPage {
         driver.element().click(downloadInvoiceBtn_button);
         return this;
     }
+
     @Step(" Validate On Payment Success Validation Message ")
     public PaymentPage validateOnPaymentSuccessValidationMessage(String message) {
         driver.verifyThat().element(successPaymentMessage_text).text().contains(message).perform();

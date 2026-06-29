@@ -6,8 +6,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ProductsPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/products";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/products";
     private final By productsPageTitle_div = By.xpath("//h2[@class='title text-center' and text()='All Products']");
     private final By searchTextArea_input = By.xpath("//input[@id='search_product']");
     private final By searchedProducts_h2 = By.xpath("//h2[text()='Searched Products']");
@@ -24,6 +24,7 @@ public class ProductsPage {
     private final By reviewSuccessAlert_div = By.xpath("//div[@class='alert-success alert']//span");
     private final By continueBtn_button = By.xpath("(//button[@class='btn btn-success close-modal btn-block'])[1]");
     private final By viewCartBtn_button = By.xpath("//a[normalize-space()='View Cart']");
+
     private By hoverOnProduct(String itemName) {
         return By.xpath("//div[@class='productinfo text-center']//child::p[text()='" + itemName + "']");
     }

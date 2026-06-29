@@ -1,0 +1,17 @@
+name: "SHAFT-powered test report"
+output: "/Users/ismailelshafeiy/Projects/Ismail Elshafeiy/TestAutomation_using_SHAFT_ENGINE/target/allure-report"
+historyPath: "/Users/ismailelshafeiy/Projects/Ismail Elshafeiy/TestAutomation_using_SHAFT_ENGINE/target/history.jsonl"
+appendHistory: true
+
+plugins:
+  awesome:
+    options:
+      reportName: "SHAFT-powered test report"
+      singleFile: true
+      logo: "https://github.com/ShaftHQ/SHAFT_ENGINE/blob/main/shaft-engine/src/main/resources/images/shaft_report_logo.png?raw=true"
+      theme: "auto"
+      reportLanguage: "en"
+      open: false
+      groupBy:
+        - package
+        - testClass

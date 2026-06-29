@@ -6,28 +6,28 @@ import org.openqa.selenium.By;
 
 public class ContactUsPage {
 
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
 
     private final By contactUsForm_div = By.xpath("//div[@class='contact-form']");
     private final By contactName_input = By.name("name");
     private final By email_input = By.name("email");
     private final By subject_input = By.name("subject");
-    private final By message_input=By.id("message");
+    private final By message_input = By.id("message");
     private final By submitBtn_button = By.name("submit");
     private final By uploadBtn_button = By.xpath("//input[@type='file']");
-    private final By successMsg_div= By.xpath("//div[@class='status alert alert-success']");
+    private final By successMsg_div = By.xpath("//div[@class='status alert alert-success']");
 
     public ContactUsPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
     }
 
     @Step("Enter ContactUs Information")
-    public ContactUsPage enterContactUsInformation(String contactNameTxt, String emailTxt , String subjectTxt, String messageTxt, String filePath) {
+    public ContactUsPage enterContactUsInformation(String contactNameTxt, String emailTxt, String subjectTxt, String messageTxt, String filePath) {
         driver.element().type(contactName_input, contactNameTxt);
-        driver.element().type(email_input,emailTxt);
-        driver.element().type(subject_input,subjectTxt);
-        driver.element().typeFileLocationForUpload(uploadBtn_button,filePath);
-        driver.element().type(message_input,messageTxt);
+        driver.element().type(email_input, emailTxt);
+        driver.element().type(subject_input, subjectTxt);
+        driver.element().typeFileLocationForUpload(uploadBtn_button, filePath);
+        driver.element().type(message_input, messageTxt);
         return this;
     }
 

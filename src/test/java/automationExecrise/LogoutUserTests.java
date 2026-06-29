@@ -15,11 +15,9 @@ import org.testng.annotations.Test;
 @Feature("User Management")
 @Story("Logout User")
 public class LogoutUserTests {
-    // Variables
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @TmsLink("55512326")
     @Test(description = "Verify user logout functionality")
     @Description("Given I open Automation Exercise home, When I click on the 'Signup / Login' button, Then I verify 'Login to your account' is visible, When I enter the correct email address and password and click the 'login' button, Then I verify that 'Logged in as username' is visible, When I click the 'Logout' button, Then I verify that the user is navigated to the login page")
@@ -28,7 +26,7 @@ public class LogoutUserTests {
         new SignupLoginPage(driver).validateOnLoginVisibility(testData.getTestData("LoginMessage"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
+
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("LogoutUserTestsTest Data.json");

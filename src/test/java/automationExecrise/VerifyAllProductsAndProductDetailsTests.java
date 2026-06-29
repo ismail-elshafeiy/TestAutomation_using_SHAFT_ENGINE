@@ -15,11 +15,10 @@ import org.testng.annotations.Test;
 @Feature("Products")
 @Story("Verify All Products and Product Details")
 public class VerifyAllProductsAndProductDetailsTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @TmsLink("55512367")
     @Test(description = "Verify The Product and the Details on ProductDetails Page")
     @Description("Given I open Automation Exercise home, When I open Products, And I pick a Product, Then I am able to check the Product Details")
@@ -36,7 +35,6 @@ public class VerifyAllProductsAndProductDetailsTests {
                         testData.getTestData("productCondition"), testData.getTestData("productBrand"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("VerifyAllProductsAndProductDetailsTestsTestData.json");

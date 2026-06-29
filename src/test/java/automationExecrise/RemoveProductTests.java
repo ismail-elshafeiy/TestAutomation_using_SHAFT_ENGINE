@@ -14,11 +14,10 @@ import org.testng.annotations.Test;
 @Feature("Cart Management")
 @Story("Remove Products From Cart")
 public class RemoveProductTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @TmsLink("55512450")
     @Test(description = "Verify removing products from the cart functionality")
     @Description("Given I open Automation Exercise home, When I add products to the cart and click the 'Cart' button, Then I verify that the cart page is displayed, When I click the 'X' button corresponding to a particular product, Then I verify that the product is removed from the cart")
@@ -33,7 +32,7 @@ public class RemoveProductTests {
                 .validateOnRemovedProduct(testData.getTestData("productName"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
+
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("RemoveProductTestsTestData.json");

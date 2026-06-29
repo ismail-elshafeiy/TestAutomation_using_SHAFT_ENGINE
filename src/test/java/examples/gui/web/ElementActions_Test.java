@@ -2,6 +2,9 @@ package examples.gui.web;
 
 import com.shaft.driver.SHAFT;
 import com.shaft.enums.internal.ClipboardAction;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import jdk.jfr.Description;
 import org.openqa.selenium.By;
 
@@ -13,13 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Listeners(ChainTestListener.class)
-public class ElementActions_Test extends BaseTests{
+@Feature("Element Actions")
+public class ElementActions_Test extends BaseTests {
 
     //public SHAFT.GUI.WebDriver driver;
     public ThreadLocal<SHAFT.TestData.EXCEL> excelReader = new ThreadLocal<>();
     public ThreadLocal<SHAFT.TestData.JSON> jsonReader = new ThreadLocal<>();
 
-
+    @Epic("Click")
+    @Story("As a user, I want to be able to click on an element so that I can interact with it.")
     @Test
     @Description("""
              Using Actions Class to perform a Click on element and Hold it
@@ -31,7 +36,8 @@ public class ElementActions_Test extends BaseTests{
         driver.get().element().clickAndHold(By.xpath("//input[@type='range']"));
     }
 
-
+    @Epic("Hover")
+    @Story("As a user, I want to be able to hover on an element so that I can see the hidden elements.")
     @Test
     public void hoverAndHoverThenClick() {
         List<By> hoverLocators = new ArrayList<By>();

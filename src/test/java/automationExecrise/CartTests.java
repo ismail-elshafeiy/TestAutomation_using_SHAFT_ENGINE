@@ -15,12 +15,12 @@ import org.testng.annotations.Test;
 @Feature("Cart Module")
 @Story("Cart Operations")
 public class CartTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
     private String timeStamp = String.valueOf(System.currentTimeMillis());
 
-    // Test Cases
+
     @TmsLink("55512390")
     @Test(description = "Subscription By email")
     @Description("Given that I Want to subscribe, When I enter valid Email, Then I should be Subscribed ")
@@ -34,7 +34,6 @@ public class CartTests {
                 .validateOnSuccessMessageOfSubscriptionEmail(testData.getTestData("successSubscriptionMessage"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("CartTestsTestData.json");

@@ -12,14 +12,14 @@ import java.util.Objects;
 
 public class HomePage {
 
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl");
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl");
 
     private final By featuredItems_div = By.cssSelector("div.features_items");
     private final By recommendedItems_div = By.cssSelector("div.recommended_items");
-    private final By categoryTitle_h2= By.xpath("//h2[@class='title text-center']");
+    private final By categoryTitle_h2 = By.xpath("//h2[@class='title text-center']");
     private final By scrollUpArrow_button = By.xpath("//i[@class='fa fa-angle-up']");
-    private final By slideHeading_h2= By.xpath("(//h2[contains(text(), 'Full-Fledged practice website for Automation Engineers')])[1]");
+    private final By slideHeading_h2 = By.xpath("(//h2[contains(text(), 'Full-Fledged practice website for Automation Engineers')])[1]");
 
     public HomePage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;

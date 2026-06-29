@@ -5,18 +5,18 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class SignupLoginPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/login";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/login";
 
     private final By signup_div = By.xpath("//div[@class='signup-form']");
     private final By signup_h2 = By.xpath("//div[@class='signup-form']//h2");
     private final By signupUserName_input = By.xpath("//input[@data-qa='signup-name']");
     private final By signupEmail_input = By.xpath("//input[@data-qa='signup-email']");
     private final By signupBtn_button = By.xpath("//button[@data-qa='signup-button']");
-    private final By login_div= By.xpath("//div[@class='login-form']");
+    private final By login_div = By.xpath("//div[@class='login-form']");
     private final By login_h2 = By.xpath("//div[@class='login-form']//h2");
     private final By loginEmail_input = By.xpath("//input[@data-qa='login-email']");
-    private final By loginPassword_input= By.xpath("//input[@data-qa='login-password']");
+    private final By loginPassword_input = By.xpath("//input[@data-qa='login-password']");
     private final By loginBtn_button = By.xpath("//button[@data-qa='login-button']");
     private final By signupExistingEmail_text = By.xpath("//p[@style='color: red;']");
 
@@ -39,7 +39,7 @@ public class SignupLoginPage {
     }
 
     @Step("User Login With Correct Email: {email} And Password: {password}")
-    public SignupLoginPage registeredUserLogin(String email, String password){
+    public SignupLoginPage registeredUserLogin(String email, String password) {
         driver.element()
                 .type(loginEmail_input, email)
                 .type(loginPassword_input, password)
@@ -55,7 +55,7 @@ public class SignupLoginPage {
     }
 
     @Step("Validate On Login Visibility")
-    public SignupLoginPage validateOnLoginVisibility(String expectedResult){
+    public SignupLoginPage validateOnLoginVisibility(String expectedResult) {
         driver.verifyThat().element(login_div).exists().perform();
         driver.verifyThat().element(login_h2).text().isEqualTo(expectedResult).perform();
         return this;

@@ -15,13 +15,12 @@ import org.testng.annotations.Test;
 @Feature("Checkout Process")
 @Story("Verify Address Details on Checkout Page")
 public class VerifyAddressDetailsTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.API api;
     private SHAFT.TestData.JSON testData;
     private String timeStamp;
 
-    // Test Cases
     @TmsLink("55512505")
     @Test(description = "Verify address details in checkout page")
     @Description("Given I open Automation Exercise home, And I Verify that home page is visible successfully, And I Click 'Signup / Login' button, And I Fill all details in Signup and create account, And I Verify 'ACCOUNT CREATED!' and click 'Continue' button, And I Verify ' Logged in as username' at top, And I Add products to cart, And I Click 'Cart' button, And I Verify that cart page is displayed, And I Click Proceed To Checkout, And I Verify that the delivery address is same address filled at the time registration of account, And I Verify that the billing address is same address filled at the time registration of account, Click 'Delete Account' button, Then Addresses should be the same as the time of registration, And Account should be deleted successfully")
@@ -84,7 +83,6 @@ public class VerifyAddressDetailsTests {
                 .validateUserNotFound(testData.getTestData("RegisterData.UserMailApi") + timeStamp + "@gizasystems.com");
     }
 
-    //////////////////// Configurations \\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("VerifyAddressDetailsTestsTestData.json");

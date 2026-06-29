@@ -1,4 +1,5 @@
 package automationExecrise.SearchProducts;
+
 import api.Apis;
 import api.ApisAccountManagement;
 import com.shaft.driver.SHAFT;
@@ -13,13 +14,13 @@ import org.testng.annotations.Test;
 @Feature("Download Invoice")
 @Story("Download Invoice After Purchase Order")
 public class DownloadInvoiceAfterPurchaseOrderTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
     private SHAFT.API api;
     private String timeStamp = String.valueOf(System.currentTimeMillis());
 
-    // Test Cases
+
     @TmsLink("55512515")
     @Test(description = "Download Invoice after purchase order")
     @Description("Given I open Automation Exercise home, When I add products to the cart and proceed to checkout, Then I register or login, fill in all required details, and place the order, And verify that the order is successfully placed, When I click the 'Download Invoice' button, Then I verify that the invoice is downloaded successfully, And I continue with the deletion of the account, ensuring the account is deleted successfully.")
@@ -56,7 +57,7 @@ public class DownloadInvoiceAfterPurchaseOrderTests {
         new CheckOutPage(driver)
                 .verifyingAddressDetails(testData.getTestData("UserFirstName"), testData.getTestData("Gender"), testData.getTestData("UserLastName"), testData.getTestData("UserAddress1"), testData.getTestData("UserCountry"), testData.getTestData("UserCity"))
                 .enteringDescriptionInCommentArea(testData.getTestData("Comment.text"));
-      SHAFT.Properties.paths.set().downloads("src/test/resources/downloadFiles");
+        SHAFT.Properties.paths.set().downloads("src/test/resources/downloadFiles");
         new PaymentPage(driver)
                 .fillPaymentInformation(testData.getTestData("Card.name"), testData.getTestData("Card.number"), testData.getTestData("Card.cvc"), testData.getTestData("Card.expirymonth"), testData.getTestData("Card.expiryyear"))
                 .validateOnPaymentSuccessValidationMessage(testData.getTestData("Messages.SuccessMessages"))
@@ -117,7 +118,6 @@ public class DownloadInvoiceAfterPurchaseOrderTests {
                 .validateUserNotFound(testData.getTestData("UserMail.GuiApi") + timeStamp + "@gizasystems.com");
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("DownloadInvoiceAfterPurchaseOrderTestsTestData.json");

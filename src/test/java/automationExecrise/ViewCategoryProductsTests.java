@@ -13,11 +13,10 @@ import org.testng.annotations.Test;
 @Feature("Category Products")
 @Story("View Category Products")
 public class ViewCategoryProductsTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @Issue("16")
     @TmsLink("55512457")
     @Test(description = "View Category Products")
@@ -35,7 +34,6 @@ public class ViewCategoryProductsTests {
                 .validateOnVisibilityOfCategoryTitle(testData.getTestData("menCategoryTitle"));
     }
 
-    //////////////////// Configurations \\\\\\\\\\\\\\\\\\\\
     @BeforeClass
     public void beforeClass() {
         testData = new SHAFT.TestData.JSON("ViewCategoryProductsTestsTestData.json");

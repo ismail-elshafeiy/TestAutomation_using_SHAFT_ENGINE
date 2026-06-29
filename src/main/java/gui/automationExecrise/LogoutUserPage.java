@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LogoutUserPage {
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
 
     private final By logoutBtn_button = By.xpath("//a[contains(text(),\" Logout\")]");
 

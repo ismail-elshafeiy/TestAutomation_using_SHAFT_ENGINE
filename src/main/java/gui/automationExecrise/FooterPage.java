@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class FooterPage {
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
 
     private final By subscriptionText_h2 = By.xpath("//div[@class='single-widget']/h2");
     private final By subscriptionEmail_input = By.id("susbscribe_email");

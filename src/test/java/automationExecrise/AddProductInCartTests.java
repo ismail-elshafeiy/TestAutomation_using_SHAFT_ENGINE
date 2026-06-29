@@ -15,11 +15,10 @@ import org.testng.annotations.Test;
 @Feature("Add Items To Cart")
 @Story("Add The First Two Items To Cart")
 public class AddProductInCartTests {
-    // Variables
+
     private SHAFT.GUI.WebDriver driver;
     private SHAFT.TestData.JSON testData;
 
-    // Test Cases
     @TmsLink("55512398")
     @Test(description = "Verify Adding Multiple Products to Cart")
     @Description("Given homepage is open, when the user adds the first product to the cart, continues shopping, adds the second product, and views the cart, then both products along with their accurate prices, quantities, and total price should be displayed.")

@@ -19,8 +19,6 @@ public class RegisterUserTests {
     private SHAFT.TestData.JSON testData;
     private String timeStamp = String.valueOf(System.currentTimeMillis());
 
-    // Test Cases
-    // @Issue("16")
     @TmsLink("55512219")
     @Test(description = "Register User Test - GUI")
     @Description("Given that I register with new user, When I enter valid data, Then I should be registered and logged in the the system")

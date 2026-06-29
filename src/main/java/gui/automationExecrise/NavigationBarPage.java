@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class NavigationBarPage {
-    private SHAFT.GUI.WebDriver driver;
+    private final SHAFT.GUI.WebDriver driver;
 
     private final By signupLogin_link = By.cssSelector("div.shop-menu a[href='/login']");
     private final By delete_link = By.cssSelector("a[href='/delete_account']");
@@ -35,7 +35,7 @@ public class NavigationBarPage {
     @Step("Click On Delete Account Link")
     public NavigationBarPage clickOnDeleteAccountLink() {
         driver.element().click(delete_link);
-        GoogleAlert.dismissAlert(driver,delete_link);
+        GoogleAlert.dismissAlert(driver, delete_link);
         return this;
     }
 

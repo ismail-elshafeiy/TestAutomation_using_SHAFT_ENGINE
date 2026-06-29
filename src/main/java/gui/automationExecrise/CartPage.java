@@ -5,8 +5,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class CartPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/view_cart";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/view_cart";
 
     private final By proceedToCheckout_button = By.cssSelector(".btn.btn-default.check_out");
     private final By productName_h4 = By.xpath("//td[@class='cart_description']//h4");

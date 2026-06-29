@@ -5,8 +5,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class SignupPage {
-    private SHAFT.GUI.WebDriver driver;
-    private String url = System.getProperty("automationExerciseBaseUrl") + "/signup";
+    private final SHAFT.GUI.WebDriver driver;
+    private final String url = System.getProperty("automationExerciseBaseUrl") + "/signup";
 
     private final By accountInfo_h1 = By.xpath("//div[@class='login-form']/h2[@class='title text-center']/b");
     private final By password_input = By.id("password");

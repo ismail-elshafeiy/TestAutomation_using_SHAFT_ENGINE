@@ -49,7 +49,7 @@ public class ProductQuantityPage {
     }
 
     @Step("Refresh Cart Page")
-    public ProductQuantityPage refreshCartPage(){
+    public ProductQuantityPage refreshCartPage() {
         driver.browser().refreshCurrentPage();
         return this;
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.IsmailElshafeiy</groupId>
@@ -9,93 +9,45 @@
     <name>TestAutomation_using_SHAFT_ENGINE</name>
     <url>https://github.com/ismail-elshafeiy</url>
     <properties>
-        <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases 8.1.20240324 -->
-        <shaft_engine.version>10.2.20260424</shaft_engine.version>
+        <!-- Make sure you point to the latest release version: https://github.com/ShaftHQ/SHAFT_ENGINE/releases  -->
+        <shaft.version>10.2.20260628</shaft.version>
         <jdk.version>25</jdk.version>
         <aspectjweaver.version>1.9.25.1</aspectjweaver.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
         <surefire-testng.version>3.5.5</surefire-testng.version>
         <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
-        <junit-jupiter-engine.version>5.12.1</junit-jupiter-engine.version>
+        <surefireArgLine/>
         <javafaker.version>1.0.2</javafaker.version>
-        <spire.xls.version>13.11.0</spire.xls.version>
-        <opencsv.version>5.6</opencsv.version>
-        <similarity.version>2.0.0</similarity.version>
-        <common-text.version>1.14.0</common-text.version>
-        <commons-csv.version>1.10.0</commons-csv.version>
-        <surefireArgLine></surefireArgLine>
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.shafthq</groupId>
+                <artifactId>shaft-bom</artifactId>
+                <version>${shaft.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.github.shafthq</groupId>
-            <artifactId>SHAFT_ENGINE</artifactId>
-            <version>${shaft_engine.version}</version>
+            <artifactId>shaft-engine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-testng</artifactId>
-            <version>${surefire-testng.version}</version>
-        </dependency>
-        <!-- CSV-->
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/info.debatty/java-string-similarity -->
-        <dependency>
-            <groupId>info.debatty</groupId>
-            <artifactId>java-string-similarity</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>1.14.0</version>
-        </dependency>
-        <!--  https://mvnrepository.com/artifact/org.apache.tika/tika-core-->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>3.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-csv</artifactId>
-            <version>${commons-csv.version}</version>
-        </dependency>
-        <!--Convert files -->
-        <!-- https://mvnrepository.com/artifact/e-iceblue/spire.xls -->
-        <dependency>
-            <groupId>e-iceblue</groupId>
-            <artifactId>spire.xls</artifactId>
-            <version>${spire.xls.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20251224</version>
-        </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>com.e-iceblue</id>
-            <name>e-iceblue</name>
-            <url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -106,8 +58,8 @@
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <encoding>UTF-8</encoding>
+                    <maxmem>10240m</maxmem>
                     <meminitial>1024m</meminitial>
-                    <maxmem>4096m</maxmem>
                 </configuration>
             </plugin>
             <plugin>
